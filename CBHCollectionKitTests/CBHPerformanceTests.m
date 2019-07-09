@@ -76,7 +76,42 @@
 			[buffer appendValue:&i];
 		}
 	}];
+}
 
+- (void)test_Buffer_setValue
+{
+	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
+
+	[self measureBlock:^{
+		for (NSUInteger i = 0; i < 100000; ++i)
+		{
+			[buffer setValue:&i atIndex:i];
+		}
+	}];
+}
+
+- (void)test_Buffer_appendUnsignedInteger
+{
+	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
+
+	[self measureBlock:^{
+		for (NSUInteger i = 0; i < 100000; ++i)
+		{
+			[buffer appendUnsignedInteger:i];
+		}
+	}];
+}
+
+- (void)test_Buffer_setUnsignedInteger
+{
+	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
+
+	[self measureBlock:^{
+		for (NSUInteger i = 0; i < 100000; ++i)
+		{
+			[buffer setUnsignedInteger:i atIndex:i];
+		}
+	}];
 }
 
 @end
