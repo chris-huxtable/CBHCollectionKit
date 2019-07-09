@@ -36,6 +36,8 @@ void CBHStack_dealloc(CBHStack_t *stack);
 #pragma mark - Entries
 
 void CBHStack_pushValue(CBHStack_t *stack, const void *value);
+void CBHStack_setValueAtIndex(CBHStack_t *stack, const void *value, size_t index);
+
 const void *CBHStack_popValue(CBHStack_t *stack);
 const void *CBHStack_peekValue(CBHStack_t *stack);
 

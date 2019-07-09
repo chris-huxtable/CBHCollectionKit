@@ -25,7 +25,7 @@
 #define _pointerToOffset(offset) ((void *)((size_t)stack->_data + (((offset)) * stack->_entrySize)))
 
 #define _guardNotEmpty(retVal) if ( stack->_count <= 0 ) return (retVal)
-#define _guardOffsetInBounds(offset) if ( (offset) >= slice->_capacity ) @throw NSRangeException
+#define _guardOffsetInBounds(offset) if ( (offset) >= stack->_capacity ) @throw NSRangeException
 
 
 #pragma mark - Initializers
@@ -75,6 +75,13 @@ inline void CBHStack_pushValue(CBHStack_t *stack, const void *value)
 	++stack->_count;
 }
 
+inline void CBHStack_setValueAtIndex(CBHStack_t *stack, const void *value, const size_t index)
+{
+	_guardOffsetInBounds(index);
+	CBHMemory_copyTo(value, _pointerToOffset(index), 1, stack->_entrySize);
+}
+
+
 inline const void *CBHStack_popValue(CBHStack_t *stack)
 {
 	_guardNotEmpty(nil);
@@ -86,4 +93,17 @@ inline const void *CBHStack_peekValue(CBHStack_t *stack)
 {
 	_guardNotEmpty(nil);
 	return *(void **)_pointerToOffset(stack->_count - 1);
+}
+
+
+#pragma mark - Capacity
+
+inline void CBHStack_setCapacity(CBHStack_t *stack, const NSUInteger capacity)
+{
+	if (capacity == stack->_capacity) return;
+
+	stack->_data = CBHMemory_realloc(stack->_data, capacity, stack->_entrySize);
+	if ( !stack->_data ) @throw CBHReallocException;
+
+	stack->_capacity = capacity;
 }

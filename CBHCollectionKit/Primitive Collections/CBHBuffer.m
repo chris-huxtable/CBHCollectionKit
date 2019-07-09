@@ -32,7 +32,7 @@
 #define _typeAtIndex(aType, anIndex) *((aType *)CBHSlice_pointerToOffset((CBHSlice_t *)&_stack, (anIndex)))
 
 #define _nextCapacity(aCapacity) (size_t)ceil((double)(aCapacity) * GROWTH_FACTOR)
-#define _growIfNeeded() if ( _stack._capacity <= _stack._count ) { CBHSlice_setCapacity((CBHSlice_t *)&_stack, _nextCapacity(_stack._capacity), NO); }
+#define _growIfNeeded() if ( _stack._capacity <= _stack._count ) { CBHStack_setCapacity(&_stack, _nextCapacity(_stack._capacity)); }
 
 #define _setValueAtIndex(aValue, anIndex)\
 {\
@@ -42,7 +42,7 @@
 	}\
 	else\
 	{\
-		CBHSlice_setValueAtOffset((CBHSlice_t *)&_stack, (anIndex), (aValue));\
+		CBHStack_setValueAtIndex(&_stack, (aValue), (anIndex));\
 	}\
 }
 
@@ -311,7 +311,7 @@
 	if ( newCapacity < 1 ) newCapacity = 1;
 
 	/// Shrink.
-	CBHSlice_setCapacity((CBHSlice_t *)&_stack, newCapacity, NO);
+	CBHStack_setCapacity(&_stack, newCapacity);
 	return YES;
 }
 
@@ -321,7 +321,7 @@
 	if ( _stack._capacity > _stack._count ) return NO;
 
 	/// Grow.
-	CBHSlice_setCapacity((CBHSlice_t *)&_stack, _nextCapacity(_stack._capacity), NO);
+	CBHStack_setCapacity(&_stack, _nextCapacity(_stack._capacity));
 	return YES;
 }
 
@@ -335,7 +335,7 @@
 	while ( neededCapacity > nextCapacity ) { nextCapacity = _nextCapacity(nextCapacity); }
 
 	/// Grow.
-	CBHSlice_setCapacity((CBHSlice_t *)&_stack, nextCapacity, NO);
+	CBHStack_setCapacity(&_stack, nextCapacity);
 	return YES;
 }
 
@@ -347,7 +347,7 @@
 	if ( newCapacity < _stack._count ) return NO;
 
 	/// Resize.
-	CBHSlice_setCapacity((CBHSlice_t *)&_stack, newCapacity, NO);
+	CBHStack_setCapacity(&_stack, newCapacity);
 	return YES;
 }
 
@@ -421,7 +421,6 @@
 
 - (void)setValue:(const void *)value atIndex:(NSUInteger)index
 {
-	_checkSettableIndex(index);
 	_setValueAtIndex(value, index);
 }
 
@@ -447,7 +446,6 @@
 - (void)setByte:(uint8_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(uint8_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -468,7 +466,6 @@
 - (void)setSignedByte:(int8_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(int8_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -489,7 +486,6 @@
 - (void)setUnsignedByte:(uint8_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(uint8_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -515,7 +511,6 @@
 - (void)setInteger:(NSInteger)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(NSUInteger);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -536,7 +531,6 @@
 - (void)setUnsignedInteger:(NSUInteger)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(NSUInteger);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -562,7 +556,6 @@
 - (void)setInt8:(int8_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(int8_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -583,7 +576,6 @@
 - (void)setUInt8:(uint8_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(uint8_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -604,7 +596,6 @@
 - (void)setInt16:(int16_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(int16_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -625,7 +616,6 @@
 - (void)setUInt16:(uint16_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(uint16_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -646,7 +636,6 @@
 - (void)setInt32:(int32_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(int32_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -667,7 +656,6 @@
 - (void)setUInt32:(uint32_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(uint32_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -688,7 +676,6 @@
 - (void)setInt64:(int64_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(int64_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -709,7 +696,6 @@
 - (void)setUInt64:(uint64_t)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(uint64_t);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -735,7 +721,6 @@
 - (void)setCGFloat:(CGFloat)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(CGFloat);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -756,7 +741,6 @@
 - (void)setFloat:(float)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(float);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -777,7 +761,6 @@
 - (void)setDouble:(double)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(double);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -798,7 +781,6 @@
 - (void)setLongDouble:(long double)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(long double);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -824,7 +806,6 @@
 - (void)setChar:(char)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(char);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
@@ -845,7 +826,6 @@
 - (void)setUnsignedChar:(unsigned char)value atIndex:(NSUInteger)index
 {
 	_checkEntrySize(unsigned char);
-	_checkSettableIndex(index);
 	_setValueAtIndex(&value, index);
 }
 
