@@ -1,0 +1,786 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8359C90122CEBD1900B66F80 /* CBHStackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C8FE22CEBD1900B66F80 /* CBHStackTests.m */; };
+		8359C90222CEBD1900B66F80 /* CBHHeapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C8FF22CEBD1900B66F80 /* CBHHeapTests.m */; };
+		8359C90322CEBD1900B66F80 /* CBHQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90022CEBD1900B66F80 /* CBHQueueTests.m */; };
+		8359C90E22CEBD3800B66F80 /* CBHBufferTests+Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90522CEBD3800B66F80 /* CBHBufferTests+Reading.m */; };
+		8359C90F22CEBD3800B66F80 /* CBHSliceTests+Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90622CEBD3800B66F80 /* CBHSliceTests+Reading.m */; };
+		8359C91022CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90722CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m */; };
+		8359C91122CEBD3800B66F80 /* CBHSliceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90822CEBD3800B66F80 /* CBHSliceTests.m */; };
+		8359C91222CEBD3800B66F80 /* CBHBufferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90A22CEBD3800B66F80 /* CBHBufferTests.m */; };
+		8359C91322CEBD3800B66F80 /* CBHMutableSliceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90B22CEBD3800B66F80 /* CBHMutableSliceTests.m */; };
+		8359C91422CEBD3800B66F80 /* CBHBufferTests+Writing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90D22CEBD3800B66F80 /* CBHBufferTests+Writing.m */; };
+		837F5DFC22CFBF520011D785 /* _CBHStack_t.h in Headers */ = {isa = PBXBuildFile; fileRef = 837F5DFB22CFBF4D0011D785 /* _CBHStack_t.h */; };
+		837F5DFF22CFBFA90011D785 /* _CBHStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 837F5DFD22CFBFA90011D785 /* _CBHStack.h */; };
+		837F5E0022CFBFA90011D785 /* _CBHStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 837F5DFE22CFBFA90011D785 /* _CBHStack.m */; };
+		83817D1022D431CF002A8306 /* CBHMemoryKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83817D0F22D431CF002A8306 /* CBHMemoryKit.framework */; };
+		83817D1122D431CF002A8306 /* CBHMemoryKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 83817D0F22D431CF002A8306 /* CBHMemoryKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		83817D1522D44B7C002A8306 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 83817D1322D44B7C002A8306 /* LICENSE */; };
+		83817D1622D44B7C002A8306 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 83817D1422D44B7C002A8306 /* README.md */; };
+		83817D1822D44B82002A8306 /* CBHCollectionKit.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 83817D1722D44B81002A8306 /* CBHCollectionKit.podspec */; };
+		83817D1A22D4E57B002A8306 /* CBHPerformanceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83817D1922D4E57B002A8306 /* CBHPerformanceTests.m */; };
+		839EDF3C22CEAC85009BD071 /* CBHCollectionKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 839EDF3222CEAC85009BD071 /* CBHCollectionKit.framework */; };
+		839EDF4322CEAC85009BD071 /* CBHCollectionKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF3522CEAC85009BD071 /* CBHCollectionKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF5122CEB582009BD071 /* CBHSlice.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF4F22CEB582009BD071 /* CBHSlice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF5222CEB582009BD071 /* CBHSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF5022CEB582009BD071 /* CBHSlice.m */; };
+		839EDF5522CEB5AE009BD071 /* _CBHSlice_t.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF5422CEB5AE009BD071 /* _CBHSlice_t.h */; };
+		839EDF5722CEB5B4009BD071 /* _CBHQueue_t.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF5622CEB5B3009BD071 /* _CBHQueue_t.h */; };
+		839EDF5A22CEB5B9009BD071 /* _CBHQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF5822CEB5B9009BD071 /* _CBHQueue.h */; };
+		839EDF5B22CEB5B9009BD071 /* _CBHQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF5922CEB5B9009BD071 /* _CBHQueue.m */; };
+		839EDF5E22CEB5C0009BD071 /* _CBHSlice.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF5C22CEB5C0009BD071 /* _CBHSlice.h */; };
+		839EDF5F22CEB5C0009BD071 /* _CBHSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF5D22CEB5C0009BD071 /* _CBHSlice.m */; };
+		839EDF6222CEB5C6009BD071 /* _CBHHeap.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF6022CEB5C6009BD071 /* _CBHHeap.h */; };
+		839EDF6322CEB5C6009BD071 /* _CBHHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF6122CEB5C6009BD071 /* _CBHHeap.m */; };
+		839EDF6622CEB5D4009BD071 /* CBHQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF6422CEB5D3009BD071 /* CBHQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF6722CEB5D4009BD071 /* CBHQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF6522CEB5D4009BD071 /* CBHQueue.m */; };
+		839EDF6A22CEB5E4009BD071 /* CBHStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF6822CEB5E4009BD071 /* CBHStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF6B22CEB5E4009BD071 /* CBHStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF6922CEB5E4009BD071 /* CBHStack.m */; };
+		839EDF6E22CEB5F0009BD071 /* CBHPrimitiveCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF6C22CEB5F0009BD071 /* CBHPrimitiveCollection.m */; };
+		839EDF6F22CEB5F0009BD071 /* CBHPrimitiveCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF6D22CEB5F0009BD071 /* CBHPrimitiveCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF7222CEB5F6009BD071 /* CBHCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7022CEB5F6009BD071 /* CBHCollection.m */; };
+		839EDF7322CEB5F6009BD071 /* CBHCollection.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF7122CEB5F6009BD071 /* CBHCollection.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF7622CEB5FD009BD071 /* CBHHeap.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF7422CEB5FD009BD071 /* CBHHeap.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF7722CEB5FD009BD071 /* CBHHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7522CEB5FD009BD071 /* CBHHeap.m */; };
+		839EDF7A22CEB602009BD071 /* CBHMutableSlice.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF7822CEB602009BD071 /* CBHMutableSlice.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF7B22CEB602009BD071 /* CBHMutableSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7922CEB602009BD071 /* CBHMutableSlice.m */; };
+		839EDF7E22CEB61D009BD071 /* CBHBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7C22CEB61D009BD071 /* CBHBuffer.m */; };
+		839EDF7F22CEB61D009BD071 /* CBHBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF7D22CEB61D009BD071 /* CBHBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		839EDF3D22CEAC85009BD071 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 839EDF2922CEAC85009BD071 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 839EDF3122CEAC85009BD071;
+			remoteInfo = CBHCollection;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		83817D1222D431D0002A8306 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				83817D1122D431CF002A8306 /* CBHMemoryKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8359C8FE22CEBD1900B66F80 /* CBHStackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHStackTests.m; sourceTree = "<group>"; };
+		8359C8FF22CEBD1900B66F80 /* CBHHeapTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHHeapTests.m; sourceTree = "<group>"; };
+		8359C90022CEBD1900B66F80 /* CBHQueueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHQueueTests.m; sourceTree = "<group>"; };
+		8359C90422CEBD3800B66F80 /* CBHBufferTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHBufferTests.h; sourceTree = "<group>"; };
+		8359C90522CEBD3800B66F80 /* CBHBufferTests+Reading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHBufferTests+Reading.m"; sourceTree = "<group>"; };
+		8359C90622CEBD3800B66F80 /* CBHSliceTests+Reading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHSliceTests+Reading.m"; sourceTree = "<group>"; };
+		8359C90722CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHMutableSliceTests+Writing.m"; sourceTree = "<group>"; };
+		8359C90822CEBD3800B66F80 /* CBHSliceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHSliceTests.m; sourceTree = "<group>"; };
+		8359C90922CEBD3800B66F80 /* CBHSliceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHSliceTests.h; sourceTree = "<group>"; };
+		8359C90A22CEBD3800B66F80 /* CBHBufferTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHBufferTests.m; sourceTree = "<group>"; };
+		8359C90B22CEBD3800B66F80 /* CBHMutableSliceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHMutableSliceTests.m; sourceTree = "<group>"; };
+		8359C90C22CEBD3800B66F80 /* CBHMutableSliceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHMutableSliceTests.h; sourceTree = "<group>"; };
+		8359C90D22CEBD3800B66F80 /* CBHBufferTests+Writing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHBufferTests+Writing.m"; sourceTree = "<group>"; };
+		837F5DFB22CFBF4D0011D785 /* _CBHStack_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _CBHStack_t.h; sourceTree = "<group>"; };
+		837F5DFD22CFBFA90011D785 /* _CBHStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _CBHStack.h; sourceTree = "<group>"; };
+		837F5DFE22CFBFA90011D785 /* _CBHStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _CBHStack.m; sourceTree = "<group>"; };
+		83817D0F22D431CF002A8306 /* CBHMemoryKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CBHMemoryKit.framework; path = Frameworks/CBHMemoryKit.framework; sourceTree = "<group>"; };
+		83817D1322D44B7C002A8306 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		83817D1422D44B7C002A8306 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		83817D1722D44B81002A8306 /* CBHCollectionKit.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CBHCollectionKit.podspec; sourceTree = "<group>"; };
+		83817D1922D4E57B002A8306 /* CBHPerformanceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHPerformanceTests.m; sourceTree = "<group>"; };
+		839EDF3222CEAC85009BD071 /* CBHCollectionKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CBHCollectionKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		839EDF3522CEAC85009BD071 /* CBHCollectionKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CBHCollectionKit.h; sourceTree = "<group>"; };
+		839EDF3622CEAC85009BD071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		839EDF3B22CEAC85009BD071 /* CBHCollectionKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CBHCollectionKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		839EDF4222CEAC85009BD071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		839EDF4F22CEB582009BD071 /* CBHSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHSlice.h; sourceTree = "<group>"; };
+		839EDF5022CEB582009BD071 /* CBHSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHSlice.m; sourceTree = "<group>"; };
+		839EDF5422CEB5AE009BD071 /* _CBHSlice_t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CBHSlice_t.h; sourceTree = "<group>"; };
+		839EDF5622CEB5B3009BD071 /* _CBHQueue_t.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CBHQueue_t.h; sourceTree = "<group>"; };
+		839EDF5822CEB5B9009BD071 /* _CBHQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CBHQueue.h; sourceTree = "<group>"; };
+		839EDF5922CEB5B9009BD071 /* _CBHQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CBHQueue.m; sourceTree = "<group>"; };
+		839EDF5C22CEB5C0009BD071 /* _CBHSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CBHSlice.h; sourceTree = "<group>"; };
+		839EDF5D22CEB5C0009BD071 /* _CBHSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CBHSlice.m; sourceTree = "<group>"; };
+		839EDF6022CEB5C6009BD071 /* _CBHHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CBHHeap.h; sourceTree = "<group>"; };
+		839EDF6122CEB5C6009BD071 /* _CBHHeap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _CBHHeap.m; sourceTree = "<group>"; };
+		839EDF6422CEB5D3009BD071 /* CBHQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHQueue.h; sourceTree = "<group>"; };
+		839EDF6522CEB5D4009BD071 /* CBHQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHQueue.m; sourceTree = "<group>"; };
+		839EDF6822CEB5E4009BD071 /* CBHStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHStack.h; sourceTree = "<group>"; };
+		839EDF6922CEB5E4009BD071 /* CBHStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHStack.m; sourceTree = "<group>"; };
+		839EDF6C22CEB5F0009BD071 /* CBHPrimitiveCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHPrimitiveCollection.m; sourceTree = "<group>"; };
+		839EDF6D22CEB5F0009BD071 /* CBHPrimitiveCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHPrimitiveCollection.h; sourceTree = "<group>"; };
+		839EDF7022CEB5F6009BD071 /* CBHCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHCollection.m; sourceTree = "<group>"; };
+		839EDF7122CEB5F6009BD071 /* CBHCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHCollection.h; sourceTree = "<group>"; };
+		839EDF7422CEB5FD009BD071 /* CBHHeap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHHeap.h; sourceTree = "<group>"; };
+		839EDF7522CEB5FD009BD071 /* CBHHeap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHHeap.m; sourceTree = "<group>"; };
+		839EDF7822CEB602009BD071 /* CBHMutableSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHMutableSlice.h; sourceTree = "<group>"; };
+		839EDF7922CEB602009BD071 /* CBHMutableSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHMutableSlice.m; sourceTree = "<group>"; };
+		839EDF7C22CEB61D009BD071 /* CBHBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHBuffer.m; sourceTree = "<group>"; };
+		839EDF7D22CEB61D009BD071 /* CBHBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHBuffer.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		839EDF2F22CEAC85009BD071 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83817D1022D431CF002A8306 /* CBHMemoryKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		839EDF3822CEAC85009BD071 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				839EDF3C22CEAC85009BD071 /* CBHCollectionKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8359C8F622CEBCCE00B66F80 /* Object Collections */ = {
+			isa = PBXGroup;
+			children = (
+				8359C8FE22CEBD1900B66F80 /* CBHStackTests.m */,
+				8359C90022CEBD1900B66F80 /* CBHQueueTests.m */,
+				8359C8FF22CEBD1900B66F80 /* CBHHeapTests.m */,
+			);
+			path = "Object Collections";
+			sourceTree = "<group>";
+		};
+		8359C8F722CEBCEC00B66F80 /* Primitive Collections */ = {
+			isa = PBXGroup;
+			children = (
+				8359C90922CEBD3800B66F80 /* CBHSliceTests.h */,
+				8359C90822CEBD3800B66F80 /* CBHSliceTests.m */,
+				8359C90622CEBD3800B66F80 /* CBHSliceTests+Reading.m */,
+				8359C90C22CEBD3800B66F80 /* CBHMutableSliceTests.h */,
+				8359C90B22CEBD3800B66F80 /* CBHMutableSliceTests.m */,
+				8359C90722CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m */,
+				8359C90422CEBD3800B66F80 /* CBHBufferTests.h */,
+				8359C90A22CEBD3800B66F80 /* CBHBufferTests.m */,
+				8359C90522CEBD3800B66F80 /* CBHBufferTests+Reading.m */,
+				8359C90D22CEBD3800B66F80 /* CBHBufferTests+Writing.m */,
+			);
+			path = "Primitive Collections";
+			sourceTree = "<group>";
+		};
+		83817D0A22D4316D002A8306 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				83817D0F22D431CF002A8306 /* CBHMemoryKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		839EDF2822CEAC85009BD071 = {
+			isa = PBXGroup;
+			children = (
+				83817D1422D44B7C002A8306 /* README.md */,
+				83817D1322D44B7C002A8306 /* LICENSE */,
+				83817D1722D44B81002A8306 /* CBHCollectionKit.podspec */,
+				839EDF3422CEAC85009BD071 /* CBHCollectionKit */,
+				839EDF3F22CEAC85009BD071 /* CBHCollectionKitTests */,
+				839EDF3322CEAC85009BD071 /* Products */,
+				83817D0A22D4316D002A8306 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		839EDF3322CEAC85009BD071 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				839EDF3222CEAC85009BD071 /* CBHCollectionKit.framework */,
+				839EDF3B22CEAC85009BD071 /* CBHCollectionKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		839EDF3422CEAC85009BD071 /* CBHCollectionKit */ = {
+			isa = PBXGroup;
+			children = (
+				839EDF3522CEAC85009BD071 /* CBHCollectionKit.h */,
+				839EDF4C22CEAC94009BD071 /* Protocols */,
+				839EDF4D22CEACAA009BD071 /* Primitive Collections */,
+				839EDF4E22CEAD06009BD071 /* Object Collections */,
+				839EDF5322CEB58D009BD071 /* Utilities */,
+				839EDF3622CEAC85009BD071 /* Info.plist */,
+			);
+			path = CBHCollectionKit;
+			sourceTree = "<group>";
+		};
+		839EDF3F22CEAC85009BD071 /* CBHCollectionKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				8359C8F722CEBCEC00B66F80 /* Primitive Collections */,
+				8359C8F622CEBCCE00B66F80 /* Object Collections */,
+				83817D1922D4E57B002A8306 /* CBHPerformanceTests.m */,
+				839EDF4222CEAC85009BD071 /* Info.plist */,
+			);
+			path = CBHCollectionKitTests;
+			sourceTree = "<group>";
+		};
+		839EDF4C22CEAC94009BD071 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				839EDF7122CEB5F6009BD071 /* CBHCollection.h */,
+				839EDF7022CEB5F6009BD071 /* CBHCollection.m */,
+				839EDF6D22CEB5F0009BD071 /* CBHPrimitiveCollection.h */,
+				839EDF6C22CEB5F0009BD071 /* CBHPrimitiveCollection.m */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		839EDF4D22CEACAA009BD071 /* Primitive Collections */ = {
+			isa = PBXGroup;
+			children = (
+				839EDF4F22CEB582009BD071 /* CBHSlice.h */,
+				839EDF5022CEB582009BD071 /* CBHSlice.m */,
+				839EDF7822CEB602009BD071 /* CBHMutableSlice.h */,
+				839EDF7922CEB602009BD071 /* CBHMutableSlice.m */,
+				839EDF7D22CEB61D009BD071 /* CBHBuffer.h */,
+				839EDF7C22CEB61D009BD071 /* CBHBuffer.m */,
+			);
+			path = "Primitive Collections";
+			sourceTree = "<group>";
+		};
+		839EDF4E22CEAD06009BD071 /* Object Collections */ = {
+			isa = PBXGroup;
+			children = (
+				839EDF6822CEB5E4009BD071 /* CBHStack.h */,
+				839EDF6922CEB5E4009BD071 /* CBHStack.m */,
+				839EDF6422CEB5D3009BD071 /* CBHQueue.h */,
+				839EDF6522CEB5D4009BD071 /* CBHQueue.m */,
+				839EDF7422CEB5FD009BD071 /* CBHHeap.h */,
+				839EDF7522CEB5FD009BD071 /* CBHHeap.m */,
+			);
+			path = "Object Collections";
+			sourceTree = "<group>";
+		};
+		839EDF5322CEB58D009BD071 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				839EDF5422CEB5AE009BD071 /* _CBHSlice_t.h */,
+				839EDF5C22CEB5C0009BD071 /* _CBHSlice.h */,
+				839EDF5D22CEB5C0009BD071 /* _CBHSlice.m */,
+				837F5DFB22CFBF4D0011D785 /* _CBHStack_t.h */,
+				837F5DFD22CFBFA90011D785 /* _CBHStack.h */,
+				837F5DFE22CFBFA90011D785 /* _CBHStack.m */,
+				839EDF5622CEB5B3009BD071 /* _CBHQueue_t.h */,
+				839EDF5822CEB5B9009BD071 /* _CBHQueue.h */,
+				839EDF5922CEB5B9009BD071 /* _CBHQueue.m */,
+				839EDF6022CEB5C6009BD071 /* _CBHHeap.h */,
+				839EDF6122CEB5C6009BD071 /* _CBHHeap.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		839EDF2D22CEAC85009BD071 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				839EDF6F22CEB5F0009BD071 /* CBHPrimitiveCollection.h in Headers */,
+				839EDF4322CEAC85009BD071 /* CBHCollectionKit.h in Headers */,
+				837F5DFF22CFBFA90011D785 /* _CBHStack.h in Headers */,
+				839EDF7322CEB5F6009BD071 /* CBHCollection.h in Headers */,
+				839EDF6222CEB5C6009BD071 /* _CBHHeap.h in Headers */,
+				839EDF6622CEB5D4009BD071 /* CBHQueue.h in Headers */,
+				839EDF5A22CEB5B9009BD071 /* _CBHQueue.h in Headers */,
+				839EDF7A22CEB602009BD071 /* CBHMutableSlice.h in Headers */,
+				839EDF7622CEB5FD009BD071 /* CBHHeap.h in Headers */,
+				837F5DFC22CFBF520011D785 /* _CBHStack_t.h in Headers */,
+				839EDF7F22CEB61D009BD071 /* CBHBuffer.h in Headers */,
+				839EDF5522CEB5AE009BD071 /* _CBHSlice_t.h in Headers */,
+				839EDF5122CEB582009BD071 /* CBHSlice.h in Headers */,
+				839EDF5722CEB5B4009BD071 /* _CBHQueue_t.h in Headers */,
+				839EDF5E22CEB5C0009BD071 /* _CBHSlice.h in Headers */,
+				839EDF6A22CEB5E4009BD071 /* CBHStack.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		839EDF3122CEAC85009BD071 /* CBHCollectionKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 839EDF4622CEAC85009BD071 /* Build configuration list for PBXNativeTarget "CBHCollectionKit" */;
+			buildPhases = (
+				839EDF2D22CEAC85009BD071 /* Headers */,
+				839EDF2E22CEAC85009BD071 /* Sources */,
+				839EDF2F22CEAC85009BD071 /* Frameworks */,
+				839EDF3022CEAC85009BD071 /* Resources */,
+				83817D1222D431D0002A8306 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CBHCollectionKit;
+			productName = CBHCollection;
+			productReference = 839EDF3222CEAC85009BD071 /* CBHCollectionKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		839EDF3A22CEAC85009BD071 /* CBHCollectionKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 839EDF4922CEAC85009BD071 /* Build configuration list for PBXNativeTarget "CBHCollectionKitTests" */;
+			buildPhases = (
+				839EDF3722CEAC85009BD071 /* Sources */,
+				839EDF3822CEAC85009BD071 /* Frameworks */,
+				839EDF3922CEAC85009BD071 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				839EDF3E22CEAC85009BD071 /* PBXTargetDependency */,
+			);
+			name = CBHCollectionKitTests;
+			productName = CBHCollectionTests;
+			productReference = 839EDF3B22CEAC85009BD071 /* CBHCollectionKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		839EDF2922CEAC85009BD071 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Christian Huxtable";
+				TargetAttributes = {
+					839EDF3122CEAC85009BD071 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+					839EDF3A22CEAC85009BD071 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 839EDF2C22CEAC85009BD071 /* Build configuration list for PBXProject "CBHCollectionKit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 839EDF2822CEAC85009BD071;
+			productRefGroup = 839EDF3322CEAC85009BD071 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				839EDF3122CEAC85009BD071 /* CBHCollectionKit */,
+				839EDF3A22CEAC85009BD071 /* CBHCollectionKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		839EDF3022CEAC85009BD071 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				83817D1622D44B7C002A8306 /* README.md in Resources */,
+				83817D1522D44B7C002A8306 /* LICENSE in Resources */,
+				83817D1822D44B82002A8306 /* CBHCollectionKit.podspec in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		839EDF3922CEAC85009BD071 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		839EDF2E22CEAC85009BD071 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				839EDF6B22CEB5E4009BD071 /* CBHStack.m in Sources */,
+				839EDF7E22CEB61D009BD071 /* CBHBuffer.m in Sources */,
+				839EDF5222CEB582009BD071 /* CBHSlice.m in Sources */,
+				839EDF5B22CEB5B9009BD071 /* _CBHQueue.m in Sources */,
+				839EDF7722CEB5FD009BD071 /* CBHHeap.m in Sources */,
+				839EDF7222CEB5F6009BD071 /* CBHCollection.m in Sources */,
+				839EDF6722CEB5D4009BD071 /* CBHQueue.m in Sources */,
+				839EDF5F22CEB5C0009BD071 /* _CBHSlice.m in Sources */,
+				837F5E0022CFBFA90011D785 /* _CBHStack.m in Sources */,
+				839EDF6E22CEB5F0009BD071 /* CBHPrimitiveCollection.m in Sources */,
+				839EDF6322CEB5C6009BD071 /* _CBHHeap.m in Sources */,
+				839EDF7B22CEB602009BD071 /* CBHMutableSlice.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		839EDF3722CEAC85009BD071 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8359C90222CEBD1900B66F80 /* CBHHeapTests.m in Sources */,
+				8359C91222CEBD3800B66F80 /* CBHBufferTests.m in Sources */,
+				8359C90F22CEBD3800B66F80 /* CBHSliceTests+Reading.m in Sources */,
+				8359C91122CEBD3800B66F80 /* CBHSliceTests.m in Sources */,
+				8359C91022CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m in Sources */,
+				8359C91422CEBD3800B66F80 /* CBHBufferTests+Writing.m in Sources */,
+				83817D1A22D4E57B002A8306 /* CBHPerformanceTests.m in Sources */,
+				8359C90122CEBD1900B66F80 /* CBHStackTests.m in Sources */,
+				8359C90E22CEBD3800B66F80 /* CBHBufferTests+Reading.m in Sources */,
+				8359C91322CEBD3800B66F80 /* CBHMutableSliceTests.m in Sources */,
+				8359C90322CEBD1900B66F80 /* CBHQueueTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		839EDF3E22CEAC85009BD071 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 839EDF3122CEAC85009BD071 /* CBHCollectionKit */;
+			targetProxy = 839EDF3D22CEAC85009BD071 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		839EDF4422CEAC85009BD071 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_ATOMIC_IMPLICIT_SEQ_CST = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES_ERROR;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = NO;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "-Wno-gnu";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		839EDF4522CEAC85009BD071 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_GCD_PERFORMANCE = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_STATIC_ANALYZER_MODE = deep;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_INTEGER = YES;
+				CLANG_UNDEFINED_BEHAVIOR_SANITIZER_NULLABILITY = YES;
+				CLANG_WARN_ASSIGN_ENUM = YES;
+				CLANG_WARN_ATOMIC_IMPLICIT_SEQ_CST = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_CXX0X_EXTENSIONS = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_FLOAT_CONVERSION = YES_ERROR;
+				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES_ERROR;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_INTERFACE_IVARS = NO;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES_AGGRESSIVE;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_SEMICOLON_BEFORE_METHOD_BODY = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CLANG_WARN__EXIT_TIME_DESTRUCTORS = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = fast;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_PEDANTIC = YES;
+				GCC_WARN_SHADOW = YES;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_LABEL = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LLVM_LTO = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_CFLAGS = "-Wno-gnu";
+				RUN_CLANG_STATIC_ANALYZER = YES;
+				SDKROOT = macosx;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		839EDF4722CEAC85009BD071 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BACZA3W44R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/CBHCollectionKit/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.huxtable.CBHCollectionKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+			};
+			name = Debug;
+		};
+		839EDF4822CEAC85009BD071 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BACZA3W44R;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "$(SRCROOT)/CBHCollectionKit/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.huxtable.CBHCollectionKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+			};
+			name = Release;
+		};
+		839EDF4A22CEAC85009BD071 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BACZA3W44R;
+				INFOPLIST_FILE = CBHCollectionKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.huxtable.CBHCollectionKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		839EDF4B22CEAC85009BD071 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = BACZA3W44R;
+				INFOPLIST_FILE = CBHCollectionKitTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ca.huxtable.CBHCollectionKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		839EDF2C22CEAC85009BD071 /* Build configuration list for PBXProject "CBHCollectionKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				839EDF4422CEAC85009BD071 /* Debug */,
+				839EDF4522CEAC85009BD071 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		839EDF4622CEAC85009BD071 /* Build configuration list for PBXNativeTarget "CBHCollectionKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				839EDF4722CEAC85009BD071 /* Debug */,
+				839EDF4822CEAC85009BD071 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		839EDF4922CEAC85009BD071 /* Build configuration list for PBXNativeTarget "CBHCollectionKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				839EDF4A22CEAC85009BD071 /* Debug */,
+				839EDF4B22CEAC85009BD071 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 839EDF2922CEAC85009BD071 /* Project object */;
+}
