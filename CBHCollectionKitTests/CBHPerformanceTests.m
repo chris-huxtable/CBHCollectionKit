@@ -29,19 +29,19 @@
 
 @implementation CBHPerformanceTests
 
-- (void)test_arrayPush
+- (void)test_Array_addObject
 {
 	NSMutableArray<NSNumber *> *array = [NSMutableArray arrayWithCapacity:8];
+	
 	[self measureBlock:^{
 		for (NSUInteger i = 0; i < 100000; ++i)
 		{
 			[array addObject:@(i)];
 		}
 	}];
-
 }
 
-- (void)test_stackPush
+- (void)test_Stack_pushObject
 {
 	CBHStack<NSNumber *> *stack = [CBHStack stack];
 
@@ -51,10 +51,10 @@
 			[stack pushObject:@(i)];
 		}
 	}];
-	
 }
 
-- (void)test_QueuePush
+
+- (void)test_Queue_enqueueObject
 {
 	CBHQueue<NSNumber *> *queue = [CBHQueue queue];
 
@@ -64,10 +64,9 @@
 			[queue enqueueObject:@(i)];
 		}
 	}];
-
 }
 
-- (void)test_BufferPush
+- (void)test_Buffer_appendValue
 {
 	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 

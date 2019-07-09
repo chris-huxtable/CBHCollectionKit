@@ -85,19 +85,19 @@ void CBHSlice_dealloc(CBHSlice_t *slice)
 
 #pragma mark - Entries
 
-inline const void *CBHSlice_pointerAtOffset(const CBHSlice_t *slice, NSUInteger const offset)
+inline const void *CBHSlice_pointerAtOffset(const CBHSlice_t *slice, const NSUInteger offset)
 {
 	_guardOffsetInBounds(offset);
 	return *(void **)_pointerToOffset(offset);
 }
 
-inline const void *CBHSlice_pointerToOffset(const CBHSlice_t *slice, NSUInteger const offset)
+inline const void *CBHSlice_pointerToOffset(const CBHSlice_t *slice, const NSUInteger offset)
 {
 	_guardOffsetInBounds(offset);
 	return _pointerToOffset(offset);
 }
 
-inline void CBHSlice_setValueAtOffset(const CBHSlice_t *slice, NSUInteger const offset, const void *value)
+inline void CBHSlice_setValueAtOffset(const CBHSlice_t *slice, const NSUInteger offset, const void *value)
 {
 	_guardOffsetInBounds(offset);
 	CBHMemory_copyTo(value, _pointerToOffset(offset), 1, slice->_entrySize);
@@ -110,7 +110,7 @@ inline void CBHSlice_setValuesInRange(const CBHSlice_t *slice, const void *value
 	_guardOffsetInBounds(offset);
 	_guardOffsetInBounds(offset + length - 1);
 
-	for ( NSUInteger i = offset; i < length; ++i )
+	for (NSUInteger i = offset; i < length; ++i)
 	{
 		CBHMemory_copyTo(value, _pointerToOffset(i), 1, slice->_entrySize);
 	}
@@ -198,6 +198,7 @@ BOOL CBHSlice_swapValuesInRange(const CBHSlice_t *slice, const NSUInteger a, con
 	CBHMemory_swapBytes(_pointerToOffset(a), _pointerToOffset(b), length, slice->_entrySize);
 	return YES;
 }
+
 
 #pragma mark - Zeroing
 

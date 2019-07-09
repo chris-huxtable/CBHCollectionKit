@@ -39,6 +39,7 @@ void CBHStack_pushValue(CBHStack_t *stack, const void *value);
 const void *CBHStack_popValue(CBHStack_t *stack);
 const void *CBHStack_peekValue(CBHStack_t *stack);
 
+
 #pragma mark - Capacity
 
 void CBHStack_setCapacity(CBHStack_t *stack, NSUInteger capacity);
