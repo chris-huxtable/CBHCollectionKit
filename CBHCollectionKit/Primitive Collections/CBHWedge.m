@@ -1,4 +1,4 @@
-//  CBHBuffer.m
+//  CBHWedge.m
 //  CBHCollectionKit
 //
 //  Created by Christian Huxtable, June 2019.
@@ -16,7 +16,7 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHBuffer.h"
+#import "CBHWedge.h"
 #import "_CBHStack.h"
 
 @import CBHMemoryKit;
@@ -53,7 +53,7 @@
 }
 
 
-@interface CBHBuffer ()
+@interface CBHWedge ()
 {
 	CBHStack_t _stack;
 }
@@ -61,40 +61,40 @@
 @end
 
 
-@implementation CBHBuffer
+@implementation CBHWedge
 
 
 #pragma mark Factories
 
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize
 {
-	return [(CBHBuffer *)[self alloc] initWithEntrySize:entrySize];
+	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize];
 }
 
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity
 {
-	return [(CBHBuffer *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity];
+	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity];
 }
 
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize copying:(NSUInteger)count entriesFromBytes:(const void *)bytes
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize copying:(NSUInteger)count entriesFromBytes:(const void *)bytes
 {
-	return [(CBHBuffer *)[self alloc] initWithEntrySize:entrySize copying:count entriesFromBytes:bytes];
+	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize copying:count entriesFromBytes:bytes];
 }
 
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity copying:(NSUInteger)count entriesFromBytes:(const void *)bytes
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity copying:(NSUInteger)count entriesFromBytes:(const void *)bytes
 {
-	return [(CBHBuffer *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity copying:count entriesFromBytes:bytes];
+	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity copying:count entriesFromBytes:bytes];
 }
 
 
-+ (instancetype)bufferWithSlice:(CBHSlice *)slice
++ (instancetype)wedgeWithSlice:(CBHSlice *)slice
 {
-	return [(CBHBuffer *)[self alloc] initWithSlice:slice];
+	return [(CBHWedge *)[self alloc] initWithSlice:slice];
 }
 
-+ (instancetype)bufferWithSlice:(CBHSlice *)slice andCapacity:(NSUInteger)capacity
++ (instancetype)wedgeWithSlice:(CBHSlice *)slice andCapacity:(NSUInteger)capacity
 {
-	return [(CBHBuffer *)[self alloc] initWithSlice:slice andCapacity:capacity];
+	return [(CBHWedge *)[self alloc] initWithSlice:slice andCapacity:capacity];
 }
 
 
@@ -183,26 +183,26 @@
 
 
 #pragma mark - Copying
-@implementation CBHBuffer (Copying)
+@implementation CBHWedge (Copying)
 
 - (id)copyWithZone:(NSZone *)zone
 {
-	return [[CBHBuffer allocWithZone:zone] initWithEntrySize:_stack._entrySize andCapacity:_stack._capacity copying:_stack._count entriesFromBytes:_stack._data];
+	return [[CBHWedge allocWithZone:zone] initWithEntrySize:_stack._entrySize andCapacity:_stack._capacity copying:_stack._count entriesFromBytes:_stack._data];
 }
 
 @end
 
 
 #pragma mark - Equality
-@implementation CBHBuffer (Equality)
+@implementation CBHWedge (Equality)
 
 - (BOOL)isEqual:(id)other
 {
-	if ( [other isKindOfClass:[CBHBuffer class]] ) return [self isEqualToBuffer:other];
+	if ( [other isKindOfClass:[CBHWedge class]] ) return [self isEqualToWedge:other];
 	return [super isEqual:other];
 }
 
-- (BOOL)isEqualToBuffer:(CBHBuffer *)other
+- (BOOL)isEqualToWedge:(CBHWedge *)other
 {
 	/// Catch trivial cases.
 	if ( self == other ) return YES;
@@ -246,7 +246,7 @@
 
 
 #pragma mark - Description
-@implementation CBHBuffer (Description)
+@implementation CBHWedge (Description)
 
 - (NSString *)description
 {
@@ -275,7 +275,7 @@
 
 
 #pragma mark - Conversion
-@implementation CBHBuffer (Conversion)
+@implementation CBHWedge (Conversion)
 
 - (NSData *)data
 {
@@ -302,7 +302,7 @@
 
 
 #pragma mark - Resizable
-@implementation CBHBuffer (Resizable)
+@implementation CBHWedge (Resizable)
 
 - (BOOL)shrink
 {
@@ -356,7 +356,7 @@
 
 
 #pragma mark - Swapping and Copying Entries
-@implementation CBHBuffer (SwapCopy)
+@implementation CBHWedge (SwapCopy)
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b
 {
@@ -382,10 +382,10 @@
 @end
 
 
-#pragma mark - Clearing Buffer
-@implementation CBHBuffer (Clearing)
+#pragma mark - Clearing wedge
+@implementation CBHWedge (Clearing)
 
-- (void)clearBuffer
+- (void)removeAll
 {
 	_stack._count = 0;
 }
@@ -406,7 +406,7 @@
 
 
 #pragma mark - Generic Accessors
-@implementation CBHBuffer (GenericAccessors)
+@implementation CBHWedge (GenericAccessors)
 
 - (const void *)valueAtIndex:(NSUInteger)index
 {
@@ -428,7 +428,7 @@
 
 
 #pragma mark - Named Byte Accessors
-@implementation CBHBuffer (NamedByteAccessors)
+@implementation CBHWedge (NamedByteAccessors)
 
 - (uint8_t)byteAtIndex:(NSUInteger)index
 {
@@ -493,7 +493,7 @@
 
 
 #pragma mark - Named Integer Accessors
-@implementation CBHBuffer (NamedIntegerAccessors)
+@implementation CBHWedge (NamedIntegerAccessors)
 
 - (NSInteger)integerAtIndex:(NSUInteger)index
 {
@@ -538,7 +538,7 @@
 
 
 #pragma mark - Sized Integer Accessors
-@implementation CBHBuffer (SizedIntegerAccessors)
+@implementation CBHWedge (SizedIntegerAccessors)
 
 - (int8_t)int8AtIndex:(NSUInteger)index
 {
@@ -703,7 +703,7 @@
 
 
 #pragma mark - Named Float Accessors
-@implementation CBHBuffer (NamedFloatAccessors)
+@implementation CBHWedge (NamedFloatAccessors)
 
 - (CGFloat)cgfloatAtIndex:(NSUInteger)index
 {
@@ -788,7 +788,7 @@
 
 
 #pragma mark - Character Accessors
-@implementation CBHBuffer (CharacterAccessors)
+@implementation CBHWedge (CharacterAccessors)
 
 - (char)charAtIndex:(NSUInteger)index
 {
@@ -832,12 +832,12 @@
 @end
 
 
-#pragma mark - Buffer from Slice
-@implementation CBHSlice (Buffer)
+#pragma mark - wedge from Slice
+@implementation CBHSlice (wedge)
 
-- (CBHBuffer *)buffer
+- (CBHWedge *)wedge
 {
-	return [CBHBuffer bufferWithEntrySize:[self entrySize] copying:[self capacity] entriesFromBytes:[self bytes]];
+	return [CBHWedge wedgeWithEntrySize:[self entrySize] copying:[self capacity] entriesFromBytes:[self bytes]];
 }
 
 @end

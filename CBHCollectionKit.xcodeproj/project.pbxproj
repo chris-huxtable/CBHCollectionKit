@@ -10,13 +10,13 @@
 		8359C90122CEBD1900B66F80 /* CBHStackTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C8FE22CEBD1900B66F80 /* CBHStackTests.m */; };
 		8359C90222CEBD1900B66F80 /* CBHHeapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C8FF22CEBD1900B66F80 /* CBHHeapTests.m */; };
 		8359C90322CEBD1900B66F80 /* CBHQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90022CEBD1900B66F80 /* CBHQueueTests.m */; };
-		8359C90E22CEBD3800B66F80 /* CBHBufferTests+Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90522CEBD3800B66F80 /* CBHBufferTests+Reading.m */; };
+		8359C90E22CEBD3800B66F80 /* CBHWedgeTests+Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90522CEBD3800B66F80 /* CBHWedgeTests+Reading.m */; };
 		8359C90F22CEBD3800B66F80 /* CBHSliceTests+Reading.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90622CEBD3800B66F80 /* CBHSliceTests+Reading.m */; };
 		8359C91022CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90722CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m */; };
 		8359C91122CEBD3800B66F80 /* CBHSliceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90822CEBD3800B66F80 /* CBHSliceTests.m */; };
-		8359C91222CEBD3800B66F80 /* CBHBufferTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90A22CEBD3800B66F80 /* CBHBufferTests.m */; };
+		8359C91222CEBD3800B66F80 /* CBHWedgeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90A22CEBD3800B66F80 /* CBHWedgeTests.m */; };
 		8359C91322CEBD3800B66F80 /* CBHMutableSliceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90B22CEBD3800B66F80 /* CBHMutableSliceTests.m */; };
-		8359C91422CEBD3800B66F80 /* CBHBufferTests+Writing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90D22CEBD3800B66F80 /* CBHBufferTests+Writing.m */; };
+		8359C91422CEBD3800B66F80 /* CBHWedgeTests+Writing.m in Sources */ = {isa = PBXBuildFile; fileRef = 8359C90D22CEBD3800B66F80 /* CBHWedgeTests+Writing.m */; };
 		837F5DFC22CFBF520011D785 /* _CBHStack_t.h in Headers */ = {isa = PBXBuildFile; fileRef = 837F5DFB22CFBF4D0011D785 /* _CBHStack_t.h */; };
 		837F5DFF22CFBFA90011D785 /* _CBHStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 837F5DFD22CFBFA90011D785 /* _CBHStack.h */; };
 		837F5E0022CFBFA90011D785 /* _CBHStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 837F5DFE22CFBFA90011D785 /* _CBHStack.m */; };
@@ -50,8 +50,8 @@
 		839EDF7722CEB5FD009BD071 /* CBHHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7522CEB5FD009BD071 /* CBHHeap.m */; };
 		839EDF7A22CEB602009BD071 /* CBHMutableSlice.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF7822CEB602009BD071 /* CBHMutableSlice.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		839EDF7B22CEB602009BD071 /* CBHMutableSlice.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7922CEB602009BD071 /* CBHMutableSlice.m */; };
-		839EDF7E22CEB61D009BD071 /* CBHBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7C22CEB61D009BD071 /* CBHBuffer.m */; };
-		839EDF7F22CEB61D009BD071 /* CBHBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF7D22CEB61D009BD071 /* CBHBuffer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		839EDF7E22CEB61D009BD071 /* CBHWedge.m in Sources */ = {isa = PBXBuildFile; fileRef = 839EDF7C22CEB61D009BD071 /* CBHWedge.m */; };
+		839EDF7F22CEB61D009BD071 /* CBHWedge.h in Headers */ = {isa = PBXBuildFile; fileRef = 839EDF7D22CEB61D009BD071 /* CBHWedge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,16 +82,16 @@
 		8359C8FE22CEBD1900B66F80 /* CBHStackTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHStackTests.m; sourceTree = "<group>"; };
 		8359C8FF22CEBD1900B66F80 /* CBHHeapTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHHeapTests.m; sourceTree = "<group>"; };
 		8359C90022CEBD1900B66F80 /* CBHQueueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHQueueTests.m; sourceTree = "<group>"; };
-		8359C90422CEBD3800B66F80 /* CBHBufferTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHBufferTests.h; sourceTree = "<group>"; };
-		8359C90522CEBD3800B66F80 /* CBHBufferTests+Reading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHBufferTests+Reading.m"; sourceTree = "<group>"; };
+		8359C90422CEBD3800B66F80 /* CBHWedgeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHWedgeTests.h; sourceTree = "<group>"; };
+		8359C90522CEBD3800B66F80 /* CBHWedgeTests+Reading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHWedgeTests+Reading.m"; sourceTree = "<group>"; };
 		8359C90622CEBD3800B66F80 /* CBHSliceTests+Reading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHSliceTests+Reading.m"; sourceTree = "<group>"; };
 		8359C90722CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHMutableSliceTests+Writing.m"; sourceTree = "<group>"; };
 		8359C90822CEBD3800B66F80 /* CBHSliceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHSliceTests.m; sourceTree = "<group>"; };
 		8359C90922CEBD3800B66F80 /* CBHSliceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHSliceTests.h; sourceTree = "<group>"; };
-		8359C90A22CEBD3800B66F80 /* CBHBufferTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHBufferTests.m; sourceTree = "<group>"; };
+		8359C90A22CEBD3800B66F80 /* CBHWedgeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHWedgeTests.m; sourceTree = "<group>"; };
 		8359C90B22CEBD3800B66F80 /* CBHMutableSliceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHMutableSliceTests.m; sourceTree = "<group>"; };
 		8359C90C22CEBD3800B66F80 /* CBHMutableSliceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHMutableSliceTests.h; sourceTree = "<group>"; };
-		8359C90D22CEBD3800B66F80 /* CBHBufferTests+Writing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHBufferTests+Writing.m"; sourceTree = "<group>"; };
+		8359C90D22CEBD3800B66F80 /* CBHWedgeTests+Writing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CBHWedgeTests+Writing.m"; sourceTree = "<group>"; };
 		837F5DFB22CFBF4D0011D785 /* _CBHStack_t.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _CBHStack_t.h; sourceTree = "<group>"; };
 		837F5DFD22CFBFA90011D785 /* _CBHStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _CBHStack.h; sourceTree = "<group>"; };
 		837F5DFE22CFBFA90011D785 /* _CBHStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _CBHStack.m; sourceTree = "<group>"; };
@@ -127,8 +127,8 @@
 		839EDF7522CEB5FD009BD071 /* CBHHeap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHHeap.m; sourceTree = "<group>"; };
 		839EDF7822CEB602009BD071 /* CBHMutableSlice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHMutableSlice.h; sourceTree = "<group>"; };
 		839EDF7922CEB602009BD071 /* CBHMutableSlice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHMutableSlice.m; sourceTree = "<group>"; };
-		839EDF7C22CEB61D009BD071 /* CBHBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHBuffer.m; sourceTree = "<group>"; };
-		839EDF7D22CEB61D009BD071 /* CBHBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHBuffer.h; sourceTree = "<group>"; };
+		839EDF7C22CEB61D009BD071 /* CBHWedge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBHWedge.m; sourceTree = "<group>"; };
+		839EDF7D22CEB61D009BD071 /* CBHWedge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBHWedge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,10 +170,10 @@
 				8359C90C22CEBD3800B66F80 /* CBHMutableSliceTests.h */,
 				8359C90B22CEBD3800B66F80 /* CBHMutableSliceTests.m */,
 				8359C90722CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m */,
-				8359C90422CEBD3800B66F80 /* CBHBufferTests.h */,
-				8359C90A22CEBD3800B66F80 /* CBHBufferTests.m */,
-				8359C90522CEBD3800B66F80 /* CBHBufferTests+Reading.m */,
-				8359C90D22CEBD3800B66F80 /* CBHBufferTests+Writing.m */,
+				8359C90422CEBD3800B66F80 /* CBHWedgeTests.h */,
+				8359C90A22CEBD3800B66F80 /* CBHWedgeTests.m */,
+				8359C90522CEBD3800B66F80 /* CBHWedgeTests+Reading.m */,
+				8359C90D22CEBD3800B66F80 /* CBHWedgeTests+Writing.m */,
 			);
 			path = "Primitive Collections";
 			sourceTree = "<group>";
@@ -250,8 +250,8 @@
 				839EDF5022CEB582009BD071 /* CBHSlice.m */,
 				839EDF7822CEB602009BD071 /* CBHMutableSlice.h */,
 				839EDF7922CEB602009BD071 /* CBHMutableSlice.m */,
-				839EDF7D22CEB61D009BD071 /* CBHBuffer.h */,
-				839EDF7C22CEB61D009BD071 /* CBHBuffer.m */,
+				839EDF7D22CEB61D009BD071 /* CBHWedge.h */,
+				839EDF7C22CEB61D009BD071 /* CBHWedge.m */,
 			);
 			path = "Primitive Collections";
 			sourceTree = "<group>";
@@ -304,7 +304,7 @@
 				839EDF7A22CEB602009BD071 /* CBHMutableSlice.h in Headers */,
 				839EDF7622CEB5FD009BD071 /* CBHHeap.h in Headers */,
 				837F5DFC22CFBF520011D785 /* _CBHStack_t.h in Headers */,
-				839EDF7F22CEB61D009BD071 /* CBHBuffer.h in Headers */,
+				839EDF7F22CEB61D009BD071 /* CBHWedge.h in Headers */,
 				839EDF5522CEB5AE009BD071 /* _CBHSlice_t.h in Headers */,
 				839EDF5122CEB582009BD071 /* CBHSlice.h in Headers */,
 				839EDF5722CEB5B4009BD071 /* _CBHQueue_t.h in Headers */,
@@ -415,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				839EDF6B22CEB5E4009BD071 /* CBHStack.m in Sources */,
-				839EDF7E22CEB61D009BD071 /* CBHBuffer.m in Sources */,
+				839EDF7E22CEB61D009BD071 /* CBHWedge.m in Sources */,
 				839EDF5222CEB582009BD071 /* CBHSlice.m in Sources */,
 				839EDF5B22CEB5B9009BD071 /* _CBHQueue.m in Sources */,
 				839EDF7722CEB5FD009BD071 /* CBHHeap.m in Sources */,
@@ -434,14 +434,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8359C90222CEBD1900B66F80 /* CBHHeapTests.m in Sources */,
-				8359C91222CEBD3800B66F80 /* CBHBufferTests.m in Sources */,
+				8359C91222CEBD3800B66F80 /* CBHWedgeTests.m in Sources */,
 				8359C90F22CEBD3800B66F80 /* CBHSliceTests+Reading.m in Sources */,
 				8359C91122CEBD3800B66F80 /* CBHSliceTests.m in Sources */,
 				8359C91022CEBD3800B66F80 /* CBHMutableSliceTests+Writing.m in Sources */,
-				8359C91422CEBD3800B66F80 /* CBHBufferTests+Writing.m in Sources */,
+				8359C91422CEBD3800B66F80 /* CBHWedgeTests+Writing.m in Sources */,
 				83817D1A22D4E57B002A8306 /* CBHPerformanceTests.m in Sources */,
 				8359C90122CEBD1900B66F80 /* CBHStackTests.m in Sources */,
-				8359C90E22CEBD3800B66F80 /* CBHBufferTests+Reading.m in Sources */,
+				8359C90E22CEBD3800B66F80 /* CBHWedgeTests+Reading.m in Sources */,
 				8359C91322CEBD3800B66F80 /* CBHMutableSliceTests.m in Sources */,
 				8359C90322CEBD1900B66F80 /* CBHQueueTests.m in Sources */,
 			);

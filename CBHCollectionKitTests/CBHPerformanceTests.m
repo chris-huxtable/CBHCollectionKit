@@ -20,7 +20,7 @@
 
 @import CBHCollectionKit.CBHStack;
 @import CBHCollectionKit.CBHQueue;
-@import CBHCollectionKit.CBHBuffer;
+@import CBHCollectionKit.CBHWedge;
 
 
 @interface CBHPerformanceTests : XCTestCase
@@ -66,50 +66,50 @@
 	}];
 }
 
-- (void)test_Buffer_appendValue
+- (void)test_Wedge_appendValue
 {
-	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
+	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
 		for (NSUInteger i = 0; i < 100000; ++i)
 		{
-			[buffer appendValue:&i];
+			[wedge appendValue:&i];
 		}
 	}];
 }
 
-- (void)test_Buffer_setValue
+- (void)test_wedge_setValue
 {
-	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
+	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
 		for (NSUInteger i = 0; i < 100000; ++i)
 		{
-			[buffer setValue:&i atIndex:i];
+			[wedge setValue:&i atIndex:i];
 		}
 	}];
 }
 
-- (void)test_Buffer_appendUnsignedInteger
+- (void)test_wedge_appendUnsignedInteger
 {
-	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
+	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
 		for (NSUInteger i = 0; i < 100000; ++i)
 		{
-			[buffer appendUnsignedInteger:i];
+			[wedge appendUnsignedInteger:i];
 		}
 	}];
 }
 
-- (void)test_Buffer_setUnsignedInteger
+- (void)test_wedge_setUnsignedInteger
 {
-	CBHBuffer *buffer = [CBHBuffer bufferWithEntrySize:sizeof(NSUInteger) andCapacity:8];
+	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
 		for (NSUInteger i = 0; i < 100000; ++i)
 		{
-			[buffer setUnsignedInteger:i atIndex:i];
+			[wedge setUnsignedInteger:i atIndex:i];
 		}
 	}];
 }

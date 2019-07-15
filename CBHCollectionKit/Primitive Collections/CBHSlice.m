@@ -19,7 +19,7 @@
 #import "CBHSlice.h"
 #import "_CBHSlice.h"
 
-#import "CBHBuffer.h"
+#import "CBHWedge.h"
 
 @import CBHMemoryKit;
 

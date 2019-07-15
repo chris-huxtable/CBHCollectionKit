@@ -19,9 +19,9 @@ A collection of easy-to-use  and safer primitive and object based collections.
 A Slice can be thought of an abstraction over a c array. It makes for safer use by performing bounds checking and by reducing user code that is more likely to contain mistakes. 
 
 
-### `CBHBuffer`
+### `CBHWedge`
 
-A Buffer, in the context of this Framework, is a dynamically sized slice. It is intended to handle growth for the user, reducing complexity and the likelihood for error.
+A Wedge, is a dynamically sized slice. It is intended to handle growth for the user, reducing complexity and the likelihood for error.
 
 
 ### `CBHStack`

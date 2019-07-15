@@ -1,4 +1,4 @@
-//  CBHBuffer.h
+//  CBHWedge.h
 //  CBHCollectionKit
 //
 //  Created by Christian Huxtable, June 2019.
@@ -25,22 +25,22 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** A dynamic ordered collection of primitive values.
  *
- * A Buffer defines a mutable slice which dynamically expands itself when needed.
+ * A Wedge defines a mutable slice which dynamically expands itself when needed.
  *
  * @author    Christian Huxtable <chris@huxtable.ca>
  */
-@interface CBHBuffer : NSObject <CBHPrimitiveCollection>
+@interface CBHWedge : NSObject <CBHPrimitiveCollection>
 
 #pragma mark Factories
 
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize;
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity;
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize;
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity;
 
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize copying:(NSUInteger)count entriesFromBytes:(const void *)bytes;
-+ (instancetype)bufferWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity copying:(NSUInteger)count entriesFromBytes:(const void *)bytes;
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize copying:(NSUInteger)count entriesFromBytes:(const void *)bytes;
++ (instancetype)wedgeWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity copying:(NSUInteger)count entriesFromBytes:(const void *)bytes;
 
-+ (instancetype)bufferWithSlice:(CBHSlice *)slice;
-+ (instancetype)bufferWithSlice:(CBHSlice *)slice andCapacity:(NSUInteger)capacity;
++ (instancetype)wedgeWithSlice:(CBHSlice *)slice;
++ (instancetype)wedgeWithSlice:(CBHSlice *)slice andCapacity:(NSUInteger)capacity;
 
 
 #pragma mark Initialization
@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Copying
-@interface CBHBuffer (Copying) <NSCopying>
+@interface CBHWedge (Copying) <NSCopying>
 
 - (id)copyWithZone:(nullable NSZone *)zone;
 
@@ -79,10 +79,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Equality
-@interface CBHBuffer (Equality)
+@interface CBHWedge (Equality)
 
 - (BOOL)isEqual:(id)other;
-- (BOOL)isEqualToBuffer:(CBHBuffer *)other;
+- (BOOL)isEqualToWedge:(CBHWedge *)other;
 
 - (NSUInteger)hash;
 
@@ -90,7 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Conversion
-@interface CBHBuffer (Conversion)
+@interface CBHWedge (Conversion)
 
 - (NSData *)data;
 - (NSMutableData *)mutableData;
@@ -102,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Resizing
-@interface CBHBuffer (Resizing) <CBHCollectionResizable>
+@interface CBHWedge (Resizing) <CBHCollectionResizable>
 
 - (BOOL)shrink;
 
@@ -115,7 +115,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Swapping and Copying Entries
-@interface CBHBuffer (SwapCopy)
+@interface CBHWedge (SwapCopy)
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b;
 - (BOOL)swapValuesInRange:(NSRange)a andIndex:(NSUInteger)b;
@@ -127,16 +127,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Clearing Buffer
-@interface CBHBuffer (Clearing)
+@interface CBHWedge (Clearing)
 
-- (void)clearBuffer;
+- (void)removeAll;
 - (void)removeLast:(NSUInteger)count;
 
 @end
 
 
 #pragma mark - Description
-@interface CBHBuffer (Description)
+@interface CBHWedge (Description)
 
 - (NSString *)description;
 - (NSString *)debugDescription;
@@ -145,7 +145,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Generic Operations
-@interface CBHBuffer (GenericOperations)
+@interface CBHWedge (GenericOperations)
 
 - (const void *)valueAtIndex:(NSUInteger)index;
 
@@ -156,7 +156,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Byte Operations
-@interface CBHBuffer (NamedByteOperations)
+@interface CBHWedge (NamedByteOperations)
 
 - (uint8_t)byteAtIndex:(NSUInteger)index;
 - (void)appendByte:(uint8_t)value;
@@ -174,7 +174,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Integer Operations
-@interface CBHBuffer (NamedIntegerOperations)
+@interface CBHWedge (NamedIntegerOperations)
 
 - (NSInteger)integerAtIndex:(NSUInteger)index;
 - (void)appendInteger:(NSInteger)value;
@@ -188,7 +188,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Sized Integer Operations
-@interface CBHBuffer (SizedIntegerOperations)
+@interface CBHWedge (SizedIntegerOperations)
 
 - (int8_t)int8AtIndex:(NSUInteger)index;
 - (void)appendInt8:(int8_t)value;
@@ -226,7 +226,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Float Accessors
-@interface CBHBuffer (NamedFloatAccessors)
+@interface CBHWedge (NamedFloatAccessors)
 
 - (CGFloat)cgfloatAtIndex:(NSUInteger)index;
 - (void)appendCGFloat:(CGFloat)value;
@@ -248,7 +248,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Character Accessors
-@interface CBHBuffer (CharacterAccessors)
+@interface CBHWedge (CharacterAccessors)
 
 - (char)charAtIndex:(NSUInteger)index;
 - (void)appendChar:(char)value;
@@ -264,7 +264,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Buffer Creation
 @interface CBHSlice (Buffer)
 
-- (CBHBuffer *)buffer;
+- (CBHWedge *)wedge;
 
 @end
 

@@ -28,7 +28,7 @@ FOUNDATION_EXPORT const unsigned char CBHCollectionKitVersionString[];
 
 #import <CBHCollectionKit/CBHSlice.h>
 #import <CBHCollectionKit/CBHMutableSlice.h>
-#import <CBHCollectionKit/CBHBuffer.h>
+#import <CBHCollectionKit/CBHWedge.h>
 
 #import <CBHCollectionKit/CBHStack.h>
 #import <CBHCollectionKit/CBHQueue.h>
