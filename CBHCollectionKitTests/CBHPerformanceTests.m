@@ -22,6 +22,7 @@
 @import CBHCollectionKit.CBHQueue;
 @import CBHCollectionKit.CBHWedge;
 
+#define ITERATIONS 100000
 
 @interface CBHPerformanceTests : XCTestCase
 @end
@@ -34,7 +35,7 @@
 	NSMutableArray<NSNumber *> *array = [NSMutableArray arrayWithCapacity:8];
 	
 	[self measureBlock:^{
-		for (NSUInteger i = 0; i < 100000; ++i)
+		for (NSUInteger i = 0; i < ITERATIONS; ++i)
 		{
 			[array addObject:@(i)];
 		}
@@ -46,7 +47,7 @@
 	CBHStack<NSNumber *> *stack = [CBHStack stack];
 
 	[self measureBlock:^{
-		for (NSUInteger i = 0; i < 100000; ++i)
+		for (NSUInteger i = 0; i < ITERATIONS; ++i)
 		{
 			[stack pushObject:@(i)];
 		}
@@ -59,7 +60,7 @@
 	CBHQueue<NSNumber *> *queue = [CBHQueue queue];
 
 	[self measureBlock:^{
-		for (NSUInteger i = 0; i < 100000; ++i)
+		for (NSUInteger i = 0; i < ITERATIONS; ++i)
 		{
 			[queue enqueueObject:@(i)];
 		}
@@ -71,7 +72,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
-		for (NSUInteger i = 0; i < 100000; ++i)
+		for (NSUInteger i = 0; i < ITERATIONS; ++i)
 		{
 			[wedge appendValue:&i];
 		}
@@ -83,7 +84,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
-		for (NSUInteger i = 0; i < 100000; ++i)
+		for (NSUInteger i = 0; i < ITERATIONS; ++i)
 		{
 			[wedge setValue:&i atIndex:i];
 		}
@@ -95,7 +96,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
-		for (NSUInteger i = 0; i < 100000; ++i)
+		for (NSUInteger i = 0; i < ITERATIONS; ++i)
 		{
 			[wedge appendUnsignedInteger:i];
 		}
@@ -107,7 +108,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
 	[self measureBlock:^{
-		for (NSUInteger i = 0; i < 100000; ++i)
+		for (NSUInteger i = 0; i < ITERATIONS; ++i)
 		{
 			[wedge setUnsignedInteger:i atIndex:i];
 		}
