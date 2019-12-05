@@ -668,6 +668,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BACZA3W44R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -683,6 +684,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.huxtable.CBHCollectionKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 			};
@@ -694,6 +696,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BACZA3W44R;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -709,6 +712,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ca.huxtable.CBHCollectionKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 			};
