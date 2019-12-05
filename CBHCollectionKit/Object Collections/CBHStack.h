@@ -29,9 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @author    Christian Huxtable <chris@huxtable.ca>
  */
-@interface CBHStack<ObjectType> : NSObject
+@interface CBHStack<ObjectType> : NSObject <NSCopying, NSFastEnumeration, CBHCollectionResizable>
 
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)stack;
 + (instancetype)stackWithCapacity:(NSUInteger)capacity;
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)stackWithEnumerator:(id<NSFastEnumeration>)enumerator;
 
 
-#pragma mark Initialization
+#pragma mark - Initialization
 
 - (instancetype)init;
 - (instancetype)initWithCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
@@ -53,53 +53,38 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithEnumerator:(id<NSFastEnumeration>)enumerator;
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic, readonly) NSUInteger count;
 @property (nonatomic, readonly) NSUInteger capacity;
 @property (nonatomic, readonly) BOOL isEmpty;
 
-@end
-
 
 #pragma mark - Copying
-@interface CBHStack (Copying) <NSCopying>
 
 - (id)copyWithZone:(nullable NSZone *)zone;
 
-@end
-
 
 #pragma mark - Equality
-@interface CBHStack<ObjectType> (Equality)
 
 - (BOOL)isEqual:(id)other;
 - (BOOL)isEqualToStack:(CBHStack<ObjectType> *)other;
 
 - (NSUInteger)hash;
 
-@end
-
 
 #pragma mark - Description
-@interface CBHStack (Description)
 
 - (NSString *)description;
 - (NSString *)debugDescription;
 
-@end
-
 
 #pragma mark - Fast Enumeration
-@interface CBHStack (FastEnumeration) <NSFastEnumeration>
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained _Nullable [_Nonnull])buffer count:(NSUInteger)len;
 
-@end
-
 
 #pragma mark - Conversion
-@interface CBHStack<ObjectType> (Conversion)
 
 - (NSArray<ObjectType> *)array;
 - (NSMutableArray<ObjectType> *)mutableArray;
@@ -107,22 +92,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSOrderedSet<ObjectType> *)orderedSet;
 - (NSMutableOrderedSet<ObjectType> *)mutableOrderedSet;
 
-@end
-
 
 #pragma mark - Accessors
-@interface CBHStack<ObjectType> (Accessors)
 
 - (nullable ObjectType)peekAtObject;
 
 - (nullable ObjectType)objectFromTop:(NSUInteger)index;
 - (nullable ObjectType)objectFromBottom:(NSUInteger)index;
 
-@end
-
 
 #pragma mark - Mutators
-@interface CBHStack<ObjectType> (Mutators)
 
 - (void)pushObject:(ObjectType)object;
 - (nullable ObjectType)popObject;
@@ -134,11 +113,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)removeAllObjects;
 
-@end
-
 
 #pragma mark - Resizing
-@interface CBHStack (Resizing) <CBHCollectionResizable>
 
 - (BOOL)shrink;
 

@@ -55,7 +55,7 @@ NS_ASSUME_NONNULL_END
 
 @implementation CBHQueue
 
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)queue
 {
@@ -95,7 +95,7 @@ NS_ASSUME_NONNULL_END
 }
 
 
-#pragma mark Initialization
+#pragma mark - Initialization
 
 - (instancetype)init
 {
@@ -200,11 +200,8 @@ NS_ASSUME_NONNULL_END
 	return ( _queue._count <= 0 );
 }
 
-@end
-
 
 #pragma mark - Copying
-@implementation CBHQueue (Copying)
 
 - (id)copyWithZone:(nullable NSZone *)zone
 {
@@ -218,11 +215,8 @@ NS_ASSUME_NONNULL_END
 	return queue;
 }
 
-@end
-
 
 #pragma mark - Equality
-@implementation CBHQueue (Equality)
 
 - (BOOL)isEqual:(id)other
 {
@@ -277,11 +271,8 @@ NS_ASSUME_NONNULL_END
 	return hash;
 }
 
-@end
-
 
 #pragma mark - Description
-@implementation CBHQueue (Description)
 
 - (NSString *)description
 {
@@ -307,11 +298,8 @@ NS_ASSUME_NONNULL_END
 	return [NSString stringWithFormat:@"<%@: %p>\n%@%@", [self class], (void *)self, properties, [self description]];
 }
 
-@end
-
 
 #pragma mark - Fast Enumeration
-@implementation CBHQueue (FastEnumeration)
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len
 {
@@ -347,11 +335,8 @@ NS_ASSUME_NONNULL_END
 	return 0;
 }
 
-@end
-
 
 #pragma mark - Conversion
-@implementation CBHQueue (Conversion)
 
 - (NSArray *)array
 {
@@ -405,11 +390,8 @@ NS_ASSUME_NONNULL_END
 	return [NSMutableOrderedSet orderedSetWithObjects:array count:_queue._count];
 }
 
-@end
-
 
 #pragma mark - Accessors
-@implementation CBHQueue (Accessors)
 
 - (id)peekAtObject
 {
@@ -423,11 +405,8 @@ NS_ASSUME_NONNULL_END
 	return _objectAtIndex(&_queue, index);
 }
 
-@end
-
 
 #pragma mark - Mutators
-@implementation CBHQueue (Mutators)
 
 - (void)enqueueObject:(id)object
 {
@@ -514,11 +493,8 @@ NS_ASSUME_NONNULL_END
 	_queue._offset = 0;
 }
 
-@end
-
 
 #pragma mark - Resizing
-@implementation CBHQueue (Resizing)
 
 - (BOOL)shrink
 {

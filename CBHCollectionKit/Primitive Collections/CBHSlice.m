@@ -39,8 +39,7 @@
 
 @implementation CBHSlice
 
-
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)sliceWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity
 {
@@ -69,7 +68,7 @@
 }
 
 
-#pragma mark Initializers
+#pragma mark - Initializers
 
 - (instancetype)initWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity
 {
@@ -119,7 +118,7 @@
 }
 
 
-#pragma mark Destructor
+#pragma mark - Destructor
 
 - (void)dealloc
 {
@@ -129,7 +128,7 @@
 }
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 - (NSUInteger)count
 {
@@ -156,11 +155,8 @@
 	return _slice._data;
 }
 
-@end
-
 
 #pragma mark - Copying
-@implementation CBHSlice (Copying)
 
 - (id)copyWithZone:(NSZone *)zone
 {
@@ -168,11 +164,8 @@
 	return [self retain];
 }
 
-@end
-
 
 #pragma mark - Equality
-@implementation CBHSlice (Equality)
 
 - (BOOL)isEqual:(id)other
 {
@@ -219,11 +212,8 @@
 	return hash;
 }
 
-@end
-
 
 #pragma mark - Description
-@implementation CBHSlice (Description)
 
 - (NSString *)description
 {
@@ -248,11 +238,8 @@
 	return [NSString stringWithFormat:@"<%@: %p> %@", [self class], (void *)self, [self description]];
 }
 
-@end
-
 
 #pragma mark - Conversion
-@implementation CBHSlice (Conversion)
 
 - (NSData *)data
 {
@@ -269,11 +256,8 @@
 	return [[[NSString alloc] initWithBytes:_slice._data length:_slice._capacity encoding:encoding] autorelease];
 }
 
-@end
-
 
 #pragma mark - Generic Accessors
-@implementation CBHSlice (GenericAccessors)
 
 - (const void *)valueAtIndex:(NSUInteger)index
 {

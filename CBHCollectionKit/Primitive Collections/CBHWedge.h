@@ -18,6 +18,7 @@
 
 @import Foundation;
 
+#import <CBHCollectionKit/CBHPrimitiveCollection.h>
 #import <CBHCollectionKit/CBHSlice.h>
 
 
@@ -29,9 +30,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @author    Christian Huxtable <chris@huxtable.ca>
  */
-@interface CBHWedge : NSObject <CBHPrimitiveCollection>
+@interface CBHWedge : NSObject <NSCopying, CBHPrimitiveCollection, CBHCollectionResizable>
 
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)wedgeWithEntrySize:(size_t)entrySize;
 + (instancetype)wedgeWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity;
@@ -43,9 +44,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)wedgeWithSlice:(CBHSlice *)slice andCapacity:(NSUInteger)capacity;
 
 
-#pragma mark Initialization
-
-- (instancetype)init NS_UNAVAILABLE;
+#pragma mark - Initialization
 
 - (instancetype)initWithEntrySize:(size_t)entrySize;
 - (instancetype)initWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
@@ -57,7 +56,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithSlice:(CBHSlice *)slice andCapacity:(NSUInteger)capacity;
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic, readonly) NSUInteger count;
 @property (nonatomic, readonly) NSUInteger capacity;
@@ -67,30 +66,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, readonly) const void *bytes;
 
-@end
-
 
 #pragma mark - Copying
-@interface CBHWedge (Copying) <NSCopying>
 
 - (id)copyWithZone:(nullable NSZone *)zone;
 
-@end
-
 
 #pragma mark - Equality
-@interface CBHWedge (Equality)
 
 - (BOOL)isEqual:(id)other;
 - (BOOL)isEqualToWedge:(CBHWedge *)other;
 
 - (NSUInteger)hash;
 
-@end
-
 
 #pragma mark - Conversion
-@interface CBHWedge (Conversion)
 
 - (NSData *)data;
 - (NSMutableData *)mutableData;
@@ -98,11 +88,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSString *)stringWithEncoding:(NSStringEncoding)encoding;
 
-@end
-
 
 #pragma mark - Resizing
-@interface CBHWedge (Resizing) <CBHCollectionResizable>
 
 - (BOOL)shrink;
 
@@ -111,11 +98,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (BOOL)resize:(NSUInteger)newCapacity;
 
-@end
-
 
 #pragma mark - Swapping and Duplicating Entries
-@interface CBHWedge (SwapDuplicate)
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b;
 - (BOOL)swapValuesInRange:(NSRange)a andIndex:(NSUInteger)b;
@@ -123,39 +107,36 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)duplicateValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst;
 - (void)duplicateValuesInRange:(NSRange)range toIndex:(NSUInteger)dst;
 
-@end
-
 
 #pragma mark - Clearing Buffer
-@interface CBHWedge (Clearing)
 
 - (void)removeAll;
 - (void)removeLast:(NSUInteger)count;
 
-@end
-
 
 #pragma mark - Description
-@interface CBHWedge (Description)
 
 - (NSString *)description;
 - (NSString *)debugDescription;
 
-@end
-
 
 #pragma mark - Generic Operations
-@interface CBHWedge (GenericOperations)
 
 - (const void *)valueAtIndex:(NSUInteger)index;
 
 - (void)appendValue:(const void *)value;
 - (void)setValue:(const void *)value atIndex:(NSUInteger)index;
 
+
+#pragma mark - Unavailable
+
+- (instancetype)init NS_UNAVAILABLE;
+
 @end
 
 
 #pragma mark - Named Byte Operations
+
 @interface CBHWedge (NamedByteOperations)
 
 - (uint8_t)byteAtIndex:(NSUInteger)index;
@@ -174,6 +155,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Integer Operations
+
 @interface CBHWedge (NamedIntegerOperations)
 
 - (NSInteger)integerAtIndex:(NSUInteger)index;
@@ -188,6 +170,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Sized Integer Operations
+
 @interface CBHWedge (SizedIntegerOperations)
 
 - (int8_t)int8AtIndex:(NSUInteger)index;
@@ -226,6 +209,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Float Accessors
+
 @interface CBHWedge (NamedFloatAccessors)
 
 - (CGFloat)cgfloatAtIndex:(NSUInteger)index;
@@ -248,6 +232,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Character Accessors
+
 @interface CBHWedge (CharacterAccessors)
 
 - (char)charAtIndex:(NSUInteger)index;
@@ -261,8 +246,9 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-#pragma mark - Buffer Creation
-@interface CBHSlice (Buffer)
+#pragma mark - Wedge from Slice
+
+@interface CBHSlice (Wedge)
 
 - (CBHWedge *)wedge;
 

@@ -50,7 +50,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 
-#pragma mark Private Initialization
+#pragma mark - Private Initialization
 
 - (instancetype)initWithComparator:(NSComparator)comparator firstObject:(ObjectType)object andArgumentList:(va_list)argList;
 
@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_END
 
 @implementation CBHHeap
 
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)heapWithComparator:(NSComparator)comparator
 {
@@ -101,7 +101,7 @@ NS_ASSUME_NONNULL_END
 }
 
 
-#pragma mark Initialization
+#pragma mark - Initialization
 
 - (instancetype)initWithComparator:(NSComparator)comparator
 {
@@ -178,7 +178,7 @@ NS_ASSUME_NONNULL_END
 }
 
 
-#pragma mark Destructor
+#pragma mark - Destructor
 
 - (void)dealloc
 {
@@ -189,7 +189,7 @@ NS_ASSUME_NONNULL_END
 }
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 @synthesize comparator = _comparator;
 
@@ -208,11 +208,8 @@ NS_ASSUME_NONNULL_END
 	return ( _queue._count <= 0 );
 }
 
-@end
-
 
 #pragma mark - Copying
-@implementation CBHHeap (Copying)
 
 - (id)copyWithZone:(NSZone *)zone
 {
@@ -234,11 +231,8 @@ NS_ASSUME_NONNULL_END
 	return heap;
 }
 
-@end
-
 
 #pragma mark - Equality
-@implementation CBHHeap (Equality)
 
 - (BOOL)isEqual:(id)other
 {
@@ -298,11 +292,8 @@ NS_ASSUME_NONNULL_END
 	return hash;
 }
 
-@end
-
 
 #pragma mark - Description
-@implementation CBHHeap (Description)
 
 - (NSString *)description
 {
@@ -327,11 +318,8 @@ NS_ASSUME_NONNULL_END
 	return [NSString stringWithFormat:@"<%@: %p>\n%@%@", [self class], (void *)self, properties, [self description]];
 }
 
-@end
-
 
 #pragma mark - Conversion
-@implementation CBHHeap (Conversion)
 
 - (NSArray *)array
 {
@@ -373,11 +361,8 @@ NS_ASSUME_NONNULL_END
 	return [NSMutableOrderedSet orderedSetWithObjects:array count:_queue._count];
 }
 
-@end
-
 
 #pragma mark - Peeking
-@implementation CBHHeap (Peeking)
 
 - (id)peekAtObject
 {
@@ -385,11 +370,8 @@ NS_ASSUME_NONNULL_END
 	return _peekObject();
 }
 
-@end
-
 
 #pragma mark - Addition
-@implementation CBHHeap (Addition)
 
 - (void)insertObject:(id)object
 {
@@ -434,11 +416,8 @@ NS_ASSUME_NONNULL_END
 	for (id object in enumerator) { _insertObject(&_queue, object); }
 }
 
-@end
-
 
 #pragma mark - Subtraction
-@implementation CBHHeap (Subtraction)
 
 - (id)extractObject
 {
@@ -478,11 +457,8 @@ NS_ASSUME_NONNULL_END
 	_queue._offset = 0;
 }
 
-@end
-
 
 #pragma mark - Resizing
-@implementation CBHHeap (Resizing)
 
 - (BOOL)shrink
 {

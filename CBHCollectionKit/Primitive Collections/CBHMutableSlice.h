@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface CBHMutableSlice : CBHSlice
 
-#pragma mark Copying
+#pragma mark - Copying
 
 /** Returns a new instance that’s a copy of the receiver.
  *
@@ -39,22 +39,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (id)copyWithZone:(nullable NSZone *)zone;
 
-@end
-
 
 #pragma mark - Resizing
-
-@interface CBHMutableSlice (Resizing)
 
 - (void)resize:(NSUInteger)capacity;
 - (void)resize:(NSUInteger)capacity andClear:(BOOL)shouldClear;
 
-@end
-
 
 #pragma mark - Swapping and Duplicating Entries
-
-@interface CBHMutableSlice (SwapDuplicate)
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b;
 - (BOOL)swapValuesInRange:(NSRange)a andIndex:(NSUInteger)b;
@@ -62,20 +54,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)duplicateValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst;
 - (void)duplicateValuesInRange:(NSRange)range toIndex:(NSUInteger)dst;
 
-@end
-
 
 #pragma mark - Clearing Slice
-@interface CBHMutableSlice (Clearing)
 
 - (void)clearAllValues;
 - (void)clearValuesInRange:(NSRange)range;
 
-@end
-
 
 #pragma mark - Generic Mutators
-@interface CBHMutableSlice (GenericMutators)
 
 - (void)setValue:(const void *)value atIndex:(NSUInteger)index;
 
@@ -83,6 +69,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Byte Mutators
+
 @interface CBHMutableSlice (NamedByteMutators)
 
 - (void)setByte:(uint8_t)value atIndex:(NSUInteger)index;
@@ -93,6 +80,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Integer Mutators
+
 @interface CBHMutableSlice (NamedIntegerMutators)
 
 - (void)setInteger:(NSInteger)value atIndex:(NSUInteger)index;

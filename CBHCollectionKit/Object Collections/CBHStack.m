@@ -209,11 +209,8 @@ NS_ASSUME_NONNULL_END
 	return ( _stack._count <= 0 );
 }
 
-@end
-
 
 #pragma mark - Copying
-@implementation CBHStack (Copying)
 
 - (id)copyWithZone:(NSZone *)zone
 {
@@ -227,11 +224,8 @@ NS_ASSUME_NONNULL_END
 	return stack;
 }
 
-@end
-
 
 #pragma mark - Equality
-@implementation CBHStack (Equality)
 
 - (BOOL)isEqual:(id)other
 {
@@ -285,11 +279,8 @@ NS_ASSUME_NONNULL_END
 	return hash;
 }
 
-@end
-
 
 #pragma mark - Description
-@implementation CBHStack (Description)
 
 - (NSString *)description
 {
@@ -318,11 +309,8 @@ NS_ASSUME_NONNULL_END
 	return [NSString stringWithFormat:@"<%@: %p>%@%@", [self class], (void *)self, properties, [self description]];
 }
 
-@end
-
 
 #pragma mark - Fast Enumeration
-@implementation CBHStack (FastEnumeration)
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained [])buffer count:(NSUInteger)len
 {
@@ -336,11 +324,8 @@ NS_ASSUME_NONNULL_END
 	return _stack._count;
 }
 
-@end
-
 
 #pragma mark - Conversion
-@implementation CBHStack (Conversion)
 
 - (NSArray *)array
 {
@@ -362,11 +347,8 @@ NS_ASSUME_NONNULL_END
 	return [NSMutableOrderedSet orderedSetWithObjects:_objectArray() count:_stack._count];
 }
 
-@end
-
 
 #pragma mark - Accessors
-@implementation CBHStack (Accessors)
 
 - (id)peekAtObject
 {
@@ -387,11 +369,8 @@ NS_ASSUME_NONNULL_END
 	return _objectAtIndex(&_stack, index);
 }
 
-@end
-
 
 #pragma mark - Mutators
-@implementation CBHStack (Mutators)
 
 - (void)pushObject:(id)object
 {
@@ -452,11 +431,8 @@ NS_ASSUME_NONNULL_END
 	_stack._count = 0;
 }
 
-@end
-
 
 #pragma mark - Resizing
-@implementation CBHStack (Resizing)
 
 - (BOOL)shrink
 {

@@ -21,6 +21,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Collection Protocol
+
 @protocol CBHCollection <NSObject>
 @required
 
@@ -32,7 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-#pragma mark -
+#pragma mark - Collection Resizable Protocol
+
 @protocol CBHCollectionResizable <CBHCollection>
 @required
 

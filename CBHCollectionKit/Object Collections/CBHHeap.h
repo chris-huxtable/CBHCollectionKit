@@ -29,9 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @author    Christian Huxtable <chris@huxtable.ca>
  */
-@interface CBHHeap<ObjectType> : NSObject
+@interface CBHHeap<ObjectType> : NSObject <NSCopying, CBHCollectionResizable>
 
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)heapWithComparator:(NSComparator)comparator;
 + (instancetype)heapWithComparator:(NSComparator)comparator andCapacity:(NSUInteger)capacity;
@@ -42,9 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)heapWithComparator:(NSComparator)comparator andEnumerator:(NSEnumerator<ObjectType> *)enumerator;
 
 
-#pragma mark Initialization
-
-- (instancetype)init NS_UNAVAILABLE;
+#pragma mark - Initialization
 
 - (instancetype)initWithComparator:(NSComparator)comparator;
 - (instancetype)initWithComparator:(NSComparator)comparator andCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
@@ -55,46 +53,34 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithComparator:(NSComparator)comparator andEnumerator:(NSEnumerator<ObjectType> *)enumerator;
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic, readonly) NSComparator comparator;
 @property (nonatomic, readonly) NSUInteger count;
 @property (nonatomic, readonly) NSUInteger capacity;
 @property (nonatomic, readonly) BOOL isEmpty;
 
-@end
-
 
 #pragma mark - Copying
-@interface CBHHeap (Copying) <NSCopying>
 
 - (id)copyWithZone:(nullable NSZone *)zone;
 
-@end
-
 
 #pragma mark - Equality
-@interface CBHHeap<ObjectType> (Equality)
 
 - (BOOL)isEqual:(id)other;
 - (BOOL)isEqualToHeap:(CBHHeap<ObjectType> *)other;
 
 - (NSUInteger)hash;
 
-@end
-
 
 #pragma mark - Description
-@interface CBHHeap (Description)
 
 - (NSString *)description;
 - (NSString *)debugDescription;
 
-@end
-
 
 #pragma mark - Conversion
-@interface CBHHeap<ObjectType> (Conversion)
 
 - (NSArray<ObjectType> *)array;
 - (NSMutableArray<ObjectType> *)mutableArray;
@@ -102,19 +88,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSOrderedSet<ObjectType> *)orderedSet;
 - (NSMutableOrderedSet<ObjectType> *)mutableOrderedSet;
 
-@end
-
 
 #pragma mark - Peeking
-@interface CBHHeap<ObjectType> (Peeking)
 
 - (nullable ObjectType)peekAtObject;
 
-@end
-
 
 #pragma mark - Addition
-@interface CBHHeap<ObjectType> (Addition)
 
 - (void)insertObject:(ObjectType)object;
 - (void)insertObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
@@ -123,22 +103,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)insertObjectsFromSet:(NSSet<ObjectType> *)set;
 - (void)insertObjectsFromEnumerator:(id <NSFastEnumeration>)enumerator;
 
-@end
-
 
 #pragma mark - Subtraction
-@interface CBHHeap<ObjectType> (Subtraction)
 
 - (nullable ObjectType)extractObject;
 - (NSArray<ObjectType> *)extractObjects:(NSUInteger)count;
 
 - (void)removeAllObjects;
 
-@end
-
 
 #pragma mark - Resizing
-@interface CBHHeap (Resizing) <CBHCollectionResizable>
 
 - (BOOL)shrink;
 
@@ -146,6 +120,11 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)growToFit:(NSUInteger)neededCapacity;
 
 - (BOOL)resize:(NSUInteger)newCapacity;
+
+
+#pragma mark - Unavailable
+
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 

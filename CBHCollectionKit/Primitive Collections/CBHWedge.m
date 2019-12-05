@@ -63,8 +63,7 @@
 
 @implementation CBHWedge
 
-
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)wedgeWithEntrySize:(size_t)entrySize
 {
@@ -98,7 +97,7 @@
 }
 
 
-#pragma mark Initialization
+#pragma mark - Initialization
 
 - (instancetype)initWithEntrySize:(size_t)entrySize
 {
@@ -144,7 +143,7 @@
 }
 
 
-#pragma mark Destructor
+#pragma mark - Destructor
 
 - (void)dealloc
 {
@@ -154,7 +153,7 @@
 }
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 - (NSUInteger)count
 {
@@ -181,22 +180,16 @@
 	return _stack._data;
 }
 
-@end
-
 
 #pragma mark - Copying
-@implementation CBHWedge (Copying)
 
 - (id)copyWithZone:(NSZone *)zone
 {
 	return [[CBHWedge allocWithZone:zone] initWithEntrySize:_stack._entrySize andCapacity:_stack._capacity copying:_stack._count entriesFromBytes:_stack._data];
 }
 
-@end
-
 
 #pragma mark - Equality
-@implementation CBHWedge (Equality)
 
 - (BOOL)isEqual:(id)other
 {
@@ -244,11 +237,8 @@
 	return hash;
 }
 
-@end
-
 
 #pragma mark - Description
-@implementation CBHWedge (Description)
 
 - (NSString *)description
 {
@@ -273,11 +263,8 @@
 	return [NSString stringWithFormat:@"<%@: %p> %@", [self class], (void *)self, [self description]];
 }
 
-@end
-
 
 #pragma mark - Conversion
-@implementation CBHWedge (Conversion)
 
 - (NSData *)data
 {
@@ -300,11 +287,8 @@
 	return [[[NSString alloc] initWithBytes:_stack._data length:_stack._count encoding:encoding] autorelease];
 }
 
-@end
-
 
 #pragma mark - Resizable
-@implementation CBHWedge (Resizable)
 
 - (BOOL)shrink
 {
@@ -354,11 +338,7 @@
 }
 
 
-@end
-
-
 #pragma mark - Swapping and Duplicating Entries
-@implementation CBHWedge (SwapDuplicate)
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b
 {
@@ -381,11 +361,8 @@
 	CBHSlice_copyValuesInRange((CBHSlice_t *)&_stack, range.location, dst, range.length);
 }
 
-@end
-
 
 #pragma mark - Clearing Wedge
-@implementation CBHWedge (Clearing)
 
 - (void)removeAll
 {
@@ -404,11 +381,8 @@
 	}
 }
 
-@end
-
 
 #pragma mark - Generic Accessors
-@implementation CBHWedge (GenericAccessors)
 
 - (const void *)valueAtIndex:(NSUInteger)index
 {
@@ -430,6 +404,7 @@
 
 
 #pragma mark - Named Byte Accessors
+
 @implementation CBHWedge (NamedByteAccessors)
 
 - (uint8_t)byteAtIndex:(NSUInteger)index
@@ -495,6 +470,7 @@
 
 
 #pragma mark - Named Integer Accessors
+
 @implementation CBHWedge (NamedIntegerAccessors)
 
 - (NSInteger)integerAtIndex:(NSUInteger)index
@@ -540,6 +516,7 @@
 
 
 #pragma mark - Sized Integer Accessors
+
 @implementation CBHWedge (SizedIntegerAccessors)
 
 - (int8_t)int8AtIndex:(NSUInteger)index
@@ -705,6 +682,7 @@
 
 
 #pragma mark - Named Float Accessors
+
 @implementation CBHWedge (NamedFloatAccessors)
 
 - (CGFloat)cgfloatAtIndex:(NSUInteger)index
@@ -790,6 +768,7 @@
 
 
 #pragma mark - Character Accessors
+
 @implementation CBHWedge (CharacterAccessors)
 
 - (char)charAtIndex:(NSUInteger)index
@@ -834,8 +813,9 @@
 @end
 
 
-#pragma mark - wedge from Slice
-@implementation CBHSlice (wedge)
+#pragma mark - Wedge from Slice
+
+@implementation CBHSlice (Wedge)
 
 - (CBHWedge *)wedge
 {

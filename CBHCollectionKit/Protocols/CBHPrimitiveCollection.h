@@ -23,6 +23,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Primitive Collection Protocol
+
 @protocol CBHPrimitiveCollection <CBHCollection>
 @required
 
@@ -33,6 +35,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Exceptions
 
-extern const NSExceptionName _Nonnull CBHEntrySizeException;
+extern const NSExceptionName CBHEntrySizeException;
 
 NS_ASSUME_NONNULL_END

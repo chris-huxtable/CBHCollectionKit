@@ -29,9 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @author    Christian Huxtable <chris@huxtable.ca>
  */
-@interface CBHSlice : NSObject <CBHPrimitiveCollection>
+@interface CBHSlice : NSObject <NSCopying, CBHPrimitiveCollection>
 
-#pragma mark Factories
+#pragma mark - Factories
 /**
  * @name Slice Factories
  */
@@ -89,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)sliceWithEntrySize:(size_t)entrySize owning:(NSUInteger)count entriesFromBytes:(void *)bytes;
 
 
-#pragma mark Initialization
+#pragma mark - Initialization
 /**
  * @name Slice Initialization
  */
@@ -149,7 +149,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithEntrySize:(size_t)entrySize owning:(NSUInteger)count entriesFromBytes:(void *)bytes NS_DESIGNATED_INITIALIZER;
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 /** The number of entries in the slice.
  */
@@ -173,11 +173,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, readonly) const void *bytes;
 
-@end
-
 
 #pragma mark - Copying
-@interface CBHSlice (Copying) <NSCopying>
 
 /** Returns a new instance that’s a copy of the receiver.
  *
@@ -185,11 +182,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (id)copyWithZone:(nullable NSZone *)zone;
 
-@end
-
 
 #pragma mark - Equality
-@interface CBHSlice (Equality)
 
 /** Returns a Boolean value that indicates whether the receiver and a given object are equal.
  *
@@ -213,11 +207,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSUInteger)hash;
 
-@end
-
 
 #pragma mark - Conversion
-@interface CBHSlice (Conversion)
 
 /** The receiver represented as `NSData`.
  */
@@ -233,20 +224,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)stringWithEncoding:(NSStringEncoding)encoding;
 
-@end
-
 
 #pragma mark - Description
-@interface CBHSlice (Description)
 
 - (NSString *)description;
 - (NSString *)debugDescription;
 
-@end
-
 
 #pragma mark - Generic Accessors
-@interface CBHSlice (GenericAccessors)
 
 - (const void *)valueAtIndex:(NSUInteger)index;
 
@@ -254,6 +239,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Byte Accessors
+
 @interface CBHSlice (NamedByteAccessors)
 
 - (uint8_t)byteAtIndex:(NSUInteger)index;
@@ -264,6 +250,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Integer Accessors
+
 @interface CBHSlice (NamedIntegerAccessors)
 
 - (NSInteger)integerAtIndex:(NSUInteger)index;
@@ -273,6 +260,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Sized Integer Accessors
+
 @interface CBHSlice (SizedIntegerAccessors)
 
 - (int8_t)int8AtIndex:(NSUInteger)index;
@@ -291,6 +279,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Float Accessors
+
 @interface CBHSlice (NamedFloatAccessors)
 
 - (CGFloat)cgfloatAtIndex:(NSUInteger)index;
@@ -302,6 +291,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Character Accessors
+
 @interface CBHSlice (CharacterAccessors)
 
 - (char)charAtIndex:(NSUInteger)index;

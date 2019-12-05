@@ -29,9 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  * @author    Christian Huxtable <chris@huxtable.ca>
  */
-@interface CBHQueue<ObjectType> : NSObject
+@interface CBHQueue<ObjectType> : NSObject <NSCopying, NSFastEnumeration, CBHCollectionResizable>
 
-#pragma mark Factories
+#pragma mark - Factories
 
 + (instancetype)queue;
 + (instancetype)queueWithCapacity:(NSUInteger)capacity;
@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (instancetype)queueWithEnumerator:(id<NSFastEnumeration>)enumerator;
 
 
-#pragma mark Initialization
+#pragma mark - Initialization
 
 - (instancetype)init;
 - (instancetype)initWithCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
@@ -53,53 +53,38 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithEnumerator:(id<NSFastEnumeration>)enumerator;
 
 
-#pragma mark Properties
+#pragma mark - Properties
 
 @property (nonatomic, readonly) NSUInteger count;
 @property (nonatomic, readonly) NSUInteger capacity;
 @property (nonatomic, readonly) BOOL isEmpty;
 
-@end
-
 
 #pragma mark - Copying
-@interface CBHQueue (Copying) <NSCopying>
 
 - (id)copyWithZone:(nullable NSZone *)zone;
 
-@end
-
 
 #pragma mark - Equality
-@interface CBHQueue<ObjectType> (Equality)
 
 - (BOOL)isEqual:(id)other;
 - (BOOL)isEqualToQueue:(CBHQueue<ObjectType> *)other;
 
 - (NSUInteger)hash;
 
-@end
-
 
 #pragma mark - Description
-@interface CBHQueue (Description)
 
 - (NSString *)description;
 - (NSString *)debugDescription;
 
-@end
-
 
 #pragma mark - Fast Enumeration
-@interface CBHQueue (FastEnumeration) <NSFastEnumeration>
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id __unsafe_unretained _Nullable [_Nonnull])buffer count:(NSUInteger)len;
 
-@end
-
 
 #pragma mark - Conversion
-@interface CBHQueue<ObjectType> (Conversion)
 
 - (NSArray<ObjectType> *)array;
 - (NSMutableArray<ObjectType> *)mutableArray;
@@ -107,20 +92,14 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSOrderedSet<ObjectType> *)orderedSet;
 - (NSMutableOrderedSet<ObjectType> *)mutableOrderedSet;
 
-@end
-
 
 #pragma mark - Accessors
-@interface CBHQueue<ObjectType> (Accessors)
 
 - (nullable ObjectType)peekAtObject;
 - (nullable ObjectType)objectAtIndex:(NSUInteger)index;
 
-@end
-
 
 #pragma mark - Mutators
-@interface CBHQueue<ObjectType> (Mutators)
 
 - (void)enqueueObject:(ObjectType)object;
 
@@ -135,11 +114,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)removeAllObjects;
 
-@end
-
 
 #pragma mark - Resizing
-@interface CBHQueue (Resizing) <CBHCollectionResizable>
 
 - (BOOL)shrink;
 

@@ -34,18 +34,15 @@
 
 @implementation CBHMutableSlice
 
-#pragma mark Copying
+#pragma mark - Copying
 
 - (id)copyWithZone:(NSZone *)zone
 {
 	return [[CBHSlice allocWithZone:zone] initWithEntrySize:_slice._entrySize copying:_slice._capacity entriesFromBytes:_slice._data];
 }
 
-@end
-
 
 #pragma mark - Resizing
-@implementation CBHMutableSlice (Resizing)
 
 - (void)resize:(NSUInteger)capacity
 {
@@ -57,10 +54,7 @@
 	CBHSlice_setCapacity(&_slice, capacity, shouldClear);
 }
 
-@end
 
-
-@implementation CBHMutableSlice (SwapCopy)
 #pragma mark - Swapping and Duplicating Entries
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b
@@ -84,11 +78,8 @@
 	CBHSlice_copyValuesInRange(&_slice, range.location, dst, range.length);
 }
 
-@end
-
 
 #pragma mark - Clearing Slice
-@implementation CBHMutableSlice (Clearing)
 
 - (void)clearAllValues
 {
@@ -100,11 +91,8 @@
 	CBHSlice_zeroValuesInRange(&_slice, range.location, range.length);
 }
 
-@end
-
 
 #pragma mark - Generic Mutators
-@implementation CBHMutableSlice (GenericMutators)
 
 - (void)setValue:(const void *)value atIndex:(NSUInteger)index
 {
@@ -115,6 +103,7 @@
 
 
 #pragma mark - Named Byte Mutators
+
 @implementation CBHMutableSlice (NamedByteMutators)
 
 - (void)setByte:(uint8_t)value atIndex:(NSUInteger)index
@@ -139,6 +128,7 @@
 
 
 #pragma mark - Named Integer Mutators
+
 @implementation CBHMutableSlice (NamedIntegerMutators)
 
 - (void)setInteger:(NSInteger)value atIndex:(NSUInteger)index
@@ -157,6 +147,7 @@
 
 
 #pragma mark - Sized Integer Mutators
+
 @implementation CBHMutableSlice (SizedIntegerMutators)
 
 - (void)setInt8:(int8_t)value atIndex:(NSUInteger)index
@@ -214,6 +205,7 @@
 
 
 #pragma mark - Named Float Mutators
+
 @implementation CBHMutableSlice (NamedFloatMutators)
 
 - (void)setCGFloat:(CGFloat)value atIndex:(NSUInteger)index
@@ -244,6 +236,7 @@
 
 
 #pragma mark - Character Mutators
+
 @implementation CBHMutableSlice (CharacterMutators)
 
 - (void)setChar:(char)value atIndex:(NSUInteger)index
@@ -262,6 +255,7 @@
 
 
 #pragma mark - Mutable Copying
+
 @implementation CBHSlice (MutableCopying)
 
 - (id)mutableCopyWithZone:(nullable NSZone *)zone
