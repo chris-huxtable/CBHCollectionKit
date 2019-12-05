@@ -1,8 +1,8 @@
 //  CBHMutableSliceTests.m
 //  CBHCollectionKitTests
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -16,14 +16,19 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHMutableSliceTests.h"
+@import XCTest;
+@import CBHCollectionKit.CBHMutableSlice;
+
+#import "CBHSliceTestMacros.h"
 
 
-@implementation CBHMutableSliceTests
+@interface CBHMutableSliceTests : XCTestCase
 @end
 
 
-@implementation CBHMutableSliceTests (Copying)
+@implementation CBHMutableSliceTests
+
+#pragma mark - Copy
 
 - (void)test_copy
 {

@@ -1,8 +1,8 @@
-//  CBHSliceTests+Reading.m
+//  CBHSliceReadingTests.m
 //  CBHCollectionKitTests
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -16,14 +16,21 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHSliceTests.h"
+@import XCTest;
+@import CBHCollectionKit.CBHSlice;
+
+#import "CBHSliceTestMacros.h"
 
 
-@implementation CBHSliceTests (Reading)
+@interface CBHSliceReadingTests : XCTestCase
+@end
 
-#pragma mark Generic
 
-- (void)test_read_generic
+@implementation CBHSliceReadingTests
+
+#pragma mark - Generic
+
+- (void)testRead_generic
 {
 	CBHSliceCreateDefault(slice, NSUInteger);
 
@@ -38,9 +45,9 @@
 }
 
 
-#pragma mark Bytes
+#pragma mark - Bytes
 
-- (void)test_read_byte
+- (void)testRead_byte
 {
 	CBHSliceCreateDefault(slice, uint8_t);
 	CBHAssertSliceDefault(slice, uint8_t, byte);
@@ -49,7 +56,7 @@
 	XCTAssertThrows([slice int64AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_read_signedByte
+- (void)testRead_signedByte
 {
 	CBHSliceCreateDefault(slice, int8_t);
 	CBHAssertSliceDefault(slice, int8_t, signedByte);
@@ -58,7 +65,7 @@
 	XCTAssertThrows([slice int64AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_read_unsignedByte
+- (void)testRead_unsignedByte
 {
 	CBHSliceCreateDefault(slice, uint8_t);
 	CBHAssertSliceDefault(slice, uint8_t, unsignedByte);
@@ -70,7 +77,7 @@
 
 #pragma mark - Named Integers
 
-- (void)test_read_integer
+- (void)testRead_integer
 {
 
 	CBHSliceCreateDefault(slice, NSInteger);
@@ -80,7 +87,7 @@
 	XCTAssertThrows([slice int8AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_read_unsignedInteger
+- (void)testRead_unsignedInteger
 {
 	CBHSliceCreateDefault(slice, NSUInteger);
 	CBHAssertSliceDefault(slice, NSUInteger, unsignedInteger);
@@ -92,7 +99,7 @@
 
 #pragma mark - Sized Integers
 
-- (void)test_readOutOfBounds_int8
+- (void)testReadOutOfBounds_int8
 {
 	CBHSliceCreateDefault(slice, int8_t);
 	CBHAssertSliceDefault(slice, int8_t, int8);
@@ -101,7 +108,7 @@
 	XCTAssertThrows([slice int64AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_readOutOfBounds_uint8
+- (void)testReadOutOfBounds_uint8
 {
 	CBHSliceCreateDefault(slice, uint8_t);
 	CBHAssertSliceDefault(slice, uint8_t, uint8);
@@ -111,7 +118,7 @@
 }
 
 
-- (void)test_readOutOfBounds_int16
+- (void)testReadOutOfBounds_int16
 {
 	CBHSliceCreateDefault(slice, int16_t);
 	CBHAssertSliceDefault(slice, int16_t, int16);
@@ -120,7 +127,7 @@
 	XCTAssertThrows([slice int64AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_readOutOfBounds_uint16
+- (void)testReadOutOfBounds_uint16
 {
 	CBHSliceCreateDefault(slice, uint16_t);
 	CBHAssertSliceDefault(slice, uint16_t, uint16);
@@ -130,7 +137,7 @@
 }
 
 
-- (void)test_readOutOfBounds_int32
+- (void)testReadOutOfBounds_int32
 {
 	CBHSliceCreateDefault(slice, int32_t);
 	CBHAssertSliceDefault(slice, int32_t, int32);
@@ -139,7 +146,7 @@
 	XCTAssertThrows([slice int64AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_readOutOfBounds_uint32
+- (void)testReadOutOfBounds_uint32
 {
 	CBHSliceCreateDefault(slice, uint32_t);
 	CBHAssertSliceDefault(slice, uint32_t, uint32);
@@ -149,7 +156,7 @@
 }
 
 
-- (void)test_readOutOfBounds_int64
+- (void)testReadOutOfBounds_int64
 {
 	CBHSliceCreateDefault(slice, int64_t);
 	CBHAssertSliceDefault(slice, int64_t, int64);
@@ -158,7 +165,7 @@
 	XCTAssertThrows([slice int8AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_readOutOfBounds_uint64
+- (void)testReadOutOfBounds_uint64
 {
 	CBHSliceCreateDefault(slice, uint64_t);
 	CBHAssertSliceDefault(slice, uint64_t, uint64);
@@ -170,7 +177,7 @@
 
 #pragma mark - Named Float
 
-- (void)test_read_cgfloat
+- (void)testRead_cgfloat
 {
 	CBHSliceCreateDefault(slice, CGFloat);
 	CBHAssertSliceDefault(slice, CGFloat, cgfloat);
@@ -179,7 +186,7 @@
 	XCTAssertThrows([slice int8AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_read_float
+- (void)testRead_float
 {
 	CBHSliceCreateDefault(slice, float);
 	CBHAssertSliceDefault(slice, float, float);
@@ -188,7 +195,7 @@
 	XCTAssertThrows([slice int8AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_read_double
+- (void)testRead_double
 {
 	CBHSliceCreateDefault(slice, double);
 	CBHAssertSliceDefault(slice, double, double);
@@ -197,7 +204,7 @@
 	XCTAssertThrows([slice int8AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_read_longDouble
+- (void)testRead_longDouble
 {
 	CBHSliceCreateDefault(slice, long double);
 	CBHAssertSliceDefault(slice, long double, longDouble);
@@ -209,7 +216,7 @@
 
 #pragma mark - Characters
 
-- (void)test_read_char
+- (void)testRead_char
 {
 	const char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(char) copying:8 entriesFromBytes:list];
@@ -226,7 +233,7 @@
 	XCTAssertThrows([slice int64AtIndex:0], @"Fails to catch bad read.");
 }
 
-- (void)test_read_unsignedChar
+- (void)testRead_unsignedChar
 {
 	const char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];

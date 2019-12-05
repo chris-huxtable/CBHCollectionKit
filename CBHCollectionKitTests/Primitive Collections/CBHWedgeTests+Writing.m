@@ -1,8 +1,8 @@
-//  CBHWedgeTest+Writing.m
+//  CBHWedgeWriteTests.m
 //  CBHCollectionKitTests
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -16,14 +16,21 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHWedgeTests.h"
+@import XCTest;
+@import CBHCollectionKit.CBHWedge;
+
+#import "CBHWedgeTestMacros.h"
 
 
-@implementation CBHWedgeTests (Write)
+@interface CBHWedgeWriteTests : XCTestCase
+@end
 
-#pragma mark Generic
 
-- (void)test_write_generic
+@implementation CBHWedgeWriteTests
+
+#pragma mark - Generic
+
+- (void)testWrite_generic
 {
 	const NSUInteger list[] = {8, 8, 8, 8, 8, 8, 8, 8};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -76,9 +83,9 @@
 }
 
 
-#pragma mark Bytes
+#pragma mark - Bytes
 
-- (void)test_write_byte
+- (void)testWrite_byte
 {
 	CBHWedgeCreateConstant(wedge, uint8_t);
 	
@@ -117,7 +124,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, uint8_t, byte, 10);
 }
 
-- (void)test_write_signedByte
+- (void)testWrite_signedByte
 {
 	CBHWedgeCreateConstant(wedge, int8_t);
 
@@ -156,7 +163,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, int8_t, signedByte, 10);
 }
 
-- (void)test_write_unsignedByte
+- (void)testWrite_unsignedByte
 {
 	CBHWedgeCreateConstant(wedge, uint8_t);
 
@@ -198,7 +205,7 @@
 
 #pragma mark - Named Integers
 
-- (void)test_write_integer
+- (void)testWrite_integer
 {
 	CBHWedgeCreateConstant(wedge, NSInteger);
 
@@ -237,7 +244,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, NSInteger, integer, 10);
 }
 
-- (void)test_write_unsignedInteger
+- (void)testWrite_unsignedInteger
 {
 	CBHWedgeCreateConstant(wedge, NSUInteger);
 
@@ -279,7 +286,7 @@
 
 #pragma mark - Sized Integers
 
-- (void)test_write_int8
+- (void)testWrite_int8
 {
 	CBHWedgeCreateConstant(wedge, int8_t);
 
@@ -318,7 +325,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, int8_t, int8, 10);
 }
 
-- (void)test_write_uint8
+- (void)testWrite_uint8
 {
 	CBHWedgeCreateConstant(wedge, uint8_t);
 
@@ -358,7 +365,7 @@
 }
 
 
-- (void)test_write_int16
+- (void)testWrite_int16
 {
 	CBHWedgeCreateConstant(wedge, int16_t);
 
@@ -397,7 +404,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, int16_t, int16, 10);
 }
 
-- (void)test_write_uint16
+- (void)testWrite_uint16
 {
 	CBHWedgeCreateConstant(wedge, uint16_t);
 
@@ -437,7 +444,7 @@
 }
 
 
-- (void)test_write_int32
+- (void)testWrite_int32
 {
 	CBHWedgeCreateConstant(wedge, int32_t);
 
@@ -476,7 +483,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, int32_t, int32, 10);
 }
 
-- (void)test_write_uint32
+- (void)testWrite_uint32
 {
 	CBHWedgeCreateConstant(wedge, uint32_t);
 
@@ -516,7 +523,7 @@
 }
 
 
-- (void)test_write_int64
+- (void)testWrite_int64
 {
 	CBHWedgeCreateConstant(wedge, uint64_t);
 
@@ -555,7 +562,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, int64_t, int64, 10);
 }
 
-- (void)test_write_uint64
+- (void)testWrite_uint64
 {
 	const uint64_t list[] = {8, 8, 8, 8, 8, 8, 8, 8};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(uint64_t) copying:8 entriesFromBytes:list];
@@ -598,7 +605,7 @@
 
 #pragma mark - Named Floats
 
-- (void)test_write_cgfloat
+- (void)testWrite_cgfloat
 {
 	CBHWedgeCreateConstant(wedge, CGFloat);
 
@@ -637,7 +644,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, CGFloat, cgfloat, 10);
 }
 
-- (void)test_write_float
+- (void)testWrite_float
 {
 	CBHWedgeCreateConstant(wedge, float);
 
@@ -676,7 +683,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, float, float, 10);
 }
 
-- (void)test_write_double
+- (void)testWrite_double
 {
 	CBHWedgeCreateConstant(wedge, double);
 
@@ -715,7 +722,7 @@
 	CBHAssertWedgeValueIsIndex(wedge, double, double, 10);
 }
 
-- (void)test_write_longDouble
+- (void)testWrite_longDouble
 {
 	CBHWedgeCreateConstant(wedge, long double);
 
@@ -757,7 +764,7 @@
 
 #pragma mark - Characters
 
-- (void)test_write_char
+- (void)testWrite_char
 {
 	const char list[] = {'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h'};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(char) copying:8 entriesFromBytes:list];
@@ -800,7 +807,7 @@
 	}
 }
 
-- (void)test_write_unsignedChar
+- (void)testWrite_unsignedChar
 {
 	const unsigned char list[] = {'h', 'h', 'h', 'h', 'h', 'h', 'h', 'h'};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];

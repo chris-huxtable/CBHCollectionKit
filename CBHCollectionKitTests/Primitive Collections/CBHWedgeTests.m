@@ -16,12 +16,21 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHWedgeTests.h"
+@import XCTest;
+@import CBHCollectionKit.CBHWedge;
+
+#import "CBHWedgeTestMacros.h"
+
+
+@interface CBHWedgeTests : XCTestCase
+@end
 
 
 @implementation CBHWedgeTests
 
-- (void)test_initialization_basic
+#pragma mark - Initialization
+
+- (void)testInitialization_basic
 {
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger)];
 	CBHAssertWedgeState(wedge, 8, 0, NSUInteger, NO);
@@ -30,7 +39,7 @@
 	XCTAssertThrows([wedge integerAtIndex:NSUIntegerMax], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_initialization_noCapacity
+- (void)testInitialization_noCapacity
 {
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:0];
 	CBHAssertWedgeState(wedge, 0, 0, NSUInteger, YES);
@@ -39,7 +48,7 @@
 	XCTAssertThrows([wedge integerAtIndex:NSUIntegerMax], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_initialization_fromSlice
+- (void)testInitialization_fromSlice
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -54,7 +63,7 @@
 	}
 }
 
-- (void)test_initialization_fromSliceAndCapacity
+- (void)testInitialization_fromSliceAndCapacity
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -72,7 +81,7 @@
 	XCTAssertThrows([wedge integerAtIndex:NSUIntegerMax], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_initialization_fromSliceAndCapacity_capacityTooSmall
+- (void)testInitialization_fromSliceAndCapacity_capacityTooSmall
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -90,7 +99,7 @@
 	XCTAssertThrows([wedge integerAtIndex:NSUIntegerMax], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_initialization_fail
+- (void)testInitialization_fail
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -98,12 +107,10 @@
 	XCTAssertThrows([CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:NSUIntegerMax entriesFromBytes:list], @"Fails to catch overflow error.");
 }
 
-@end
 
+#pragma mark - Copying
 
-@implementation CBHWedgeTests (Copying)
-
-- (void)test_copy
+- (void)testCopy
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -126,12 +133,10 @@
 	XCTAssertNotEqualObjects(wedge, copy);
 }
 
-@end
 
+#pragma mark - Equality
 
-@implementation CBHWedgeTests (Equality)
-
-- (void)test_equality_same
+- (void)testEquality_same
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -142,7 +147,7 @@
 	XCTAssertTrue([wedge0 isEqualToWedge:wedge1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_wrongObjectType
+- (void)testEquality_wrongObjectType
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -152,7 +157,7 @@
 	XCTAssertNotEqualObjects(wedge, array, @"Fails to detect inequality.");
 }
 
-- (void)test_equality_entrySize
+- (void)testEquality_entrySize
 {
 	const NSUInteger list0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	const uint8_t list1[] = {0, 1, 2, 3, 4, 5, 6, 7};
@@ -164,7 +169,7 @@
 	XCTAssertFalse([wedge0 isEqualToWedge:wedge1], @"Fails to detect inequality.");
 }
 
-- (void)test_equality_empty
+- (void)testEquality_empty
 {
 	CBHWedge *wedge0 = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:0];
 	CBHWedge *wedge1 = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:0];
@@ -173,7 +178,7 @@
 	XCTAssertTrue([wedge0 isEqualToWedge:wedge1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_one
+- (void)testEquality_one
 {
 	const NSUInteger list[] = {4};
 
@@ -184,7 +189,7 @@
 	XCTAssertTrue([wedge0 isEqualToWedge:wedge1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_two
+- (void)testEquality_two
 {
 	const NSUInteger list[] = {4, 5};
 
@@ -195,7 +200,7 @@
 	XCTAssertTrue([wedge0 isEqualToWedge:wedge1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_small
+- (void)testEquality_small
 {
 	const NSUInteger list[] = {4, 5, 6, 7};
 
@@ -206,7 +211,7 @@
 	XCTAssertTrue([wedge0 isEqualToWedge:wedge1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_full
+- (void)testEquality_full
 {
 	const NSUInteger list0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	const NSUInteger list1[] = {0, 1, 2, 5, 4, 3, 6, 7};
@@ -227,7 +232,7 @@
 	XCTAssertFalse([wedge0 isEqualToWedge:wedge3], @"Fails to detect inequality in capacity.");
 }
 
-- (void)test_equality_hash
+- (void)testEquality_hash
 {
 	const NSUInteger list0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	const NSUInteger list1[] = {0, 1, 2, 3, 4, 5, 6};
@@ -273,12 +278,10 @@
 	XCTAssertEqual(hash0, hash12, @"Hash of the same data should be equal.");
 }
 
-@end
 
+#pragma mark - Conversion
 
-@implementation CBHWedgeTests (Conversion)
-
-- (void)test_data
+- (void)testConversion_data
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -287,7 +290,7 @@
 	XCTAssertEqualObjects([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], @"abcdefgh", @"Fails to convert wedge to string or data.");
 }
 
-- (void)test_mutableData
+- (void)testConversion_mutableData
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -296,7 +299,7 @@
 	XCTAssertEqualObjects([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], @"abcdefgh", @"Fails to convert wedge to string or data.");
 }
 
-- (void)test_slice
+- (void)testConversion_slice
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -306,7 +309,7 @@
 }
 
 
-- (void)test_string
+- (void)testConversion_string
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -315,7 +318,7 @@
 	XCTAssertEqualObjects(string, @"abcdefgh", @"Fails to convert wedge to string or data.");
 }
 
-- (void)test_bytes
+- (void)testConversion_bytes
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -323,7 +326,7 @@
 	XCTAssertTrue((memcmp(list, [wedge bytes], 8 * sizeof(NSUInteger)) == 0), @"Comparison failed");
 }
 
-- (void)test_wedge
+- (void)testConversion_wedge
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -333,12 +336,10 @@
 	XCTAssertEqualObjects(wedge, expected, @"Fails to convert slice to string or data.");
 }
 
-@end
 
+#pragma mark - Resizing
 
-@implementation CBHWedgeTests (Resizing)
-
-- (void)test_resize_increase
+- (void)testResize_increase
 {
 	const NSUInteger list[] = {0, 1, 2, 3};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:4 entriesFromBytes:list];
@@ -354,7 +355,7 @@
 	XCTAssertThrows([wedge unsignedIntegerAtIndex:4], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_resize_grow
+- (void)testResize_grow
 {
 	const NSUInteger list[] = {0, 1, 2, 3};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:6 copying:4 entriesFromBytes:list];
@@ -388,7 +389,7 @@
 	XCTAssertThrows([wedge unsignedIntegerAtIndex:6], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_resize_shrink
+- (void)testResize_shrink
 {
 	const NSUInteger list[] = {0, 1, 2, 3};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:6 copying:4 entriesFromBytes:list];
@@ -419,7 +420,7 @@
 	CBHAssertWedgeState(wedge, 1, 0, NSUInteger, NO);
 }
 
-- (void)test_resize
+- (void)testResize
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) andCapacity:16 copying:8 entriesFromBytes:list];
@@ -459,7 +460,7 @@
 	XCTAssertThrows([wedge unsignedIntegerAtIndex:8], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_resize_overflow
+- (void)testResize_overflow
 {
 	const NSUInteger list[] = {0, 1, 2, 3};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:4 entriesFromBytes:list];
@@ -468,7 +469,7 @@
 	XCTAssertThrows([wedge resize:NSUIntegerMax], @"Did not catch overflow");
 }
 
-- (void)test_resize_growToFit
+- (void)testResize_growToFit
 {
 	const NSUInteger list[] = {0, 1, 2, 3};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:4 entriesFromBytes:list];
@@ -480,13 +481,9 @@
 }
 
 
+#pragma mark - Clearing
 
-@end
-
-
-@implementation CBHWedgeTests (Clearing)
-
-- (void)test_clearWedge
+- (void)testClear
 {
 	const NSUInteger list[] = {0, 1, 2, 3};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:4 entriesFromBytes:list];
@@ -512,7 +509,7 @@
 	XCTAssertThrows([wedge unsignedIntegerAtIndex:NSUIntegerMax], @"Did not cat out-of-bounds access.");
 }
 
-- (void)test_removeLast
+- (void)testRemoveLast
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -548,10 +545,8 @@
 	CBHAssertWedgeState(wedge, 8, 0, NSUInteger, NO);
 }
 
-@end
 
-
-@implementation CBHWedgeTests (CopyValues)
+#pragma mark - Copy Values
 
 - (void)test_copyValues
 {
@@ -615,12 +610,10 @@
 	CBHAssertWedgeDefault(wedge, NSUInteger, unsignedInteger);
 }
 
-@end
 
+#pragma mark - Swap Values
 
-@implementation CBHWedgeTests (SwapValues)
-
-- (void)test_swapValues
+- (void)testSwap_values
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -647,7 +640,7 @@
 	XCTAssertThrows([wedge unsignedIntegerAtIndex:8], @"Fails to catch out-of-bounds on access.");
 }
 
-- (void)test_swapSameValue
+- (void)testSwap_sameValue
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -658,7 +651,7 @@
 	CBHAssertWedgeDefault(wedge, NSUInteger, unsignedInteger);
 }
 
-- (void)test_swapValuesInRange
+- (void)testSwap_valuesInRange
 {
 	CBHWedgeCreateDefault(wedge, NSUInteger);
 	CBHAssertWedgeDefault(wedge, NSUInteger, unsignedInteger);
@@ -673,7 +666,7 @@
 	}
 }
 
-- (void)test_swapSameValues
+- (void)testSwap_sameValues
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -684,7 +677,7 @@
 	CBHAssertWedgeDefault(wedge, NSUInteger, unsignedInteger);
 }
 
-- (void)test_swapOverlap
+- (void)testSwap_overlap
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -697,11 +690,10 @@
 	CBHAssertWedgeDefault(wedge, NSUInteger, unsignedInteger);
 }
 
-@end
 
-@implementation CBHWedgeTests (Description)
+#pragma mark - Description
 
-- (void)test_description
+- (void)testDescription
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -713,7 +705,7 @@
 	XCTAssertTrue([description compare:expected], @"Description is wrong");
 }
 
-- (void)test_debugDescription
+- (void)testDescription_debug
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];

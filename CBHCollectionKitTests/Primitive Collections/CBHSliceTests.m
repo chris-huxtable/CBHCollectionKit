@@ -1,8 +1,8 @@
 //  CBHSliceTests.m
 //  CBHCollectionKitTests
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -16,12 +16,21 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHSliceTests.h"
+@import XCTest;
+@import CBHCollectionKit.CBHSlice;
+
+#import "CBHSliceTestMacros.h"
+
+
+@interface CBHSliceTests : XCTestCase
+@end
 
 
 @implementation CBHSliceTests
 
-- (void)test_initialization_noInitialValue
+#pragma mark - Initialization
+
+- (void)testInitialization_noInitialValue
 {
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 	CBHAssertSliceState(slice, 8, NSUInteger, NO);
@@ -31,7 +40,7 @@
 	XCTAssertThrows([slice integerAtIndex:8], @"Fails to catch out-of-bounds error.");
 }
 
-- (void)test_initialization_noInitialValueClear
+- (void)testInitialization_noInitialValueClear
 {
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:8 shouldClear:YES];
 	CBHAssertSliceState(slice, 8, NSUInteger, NO);
@@ -41,28 +50,28 @@
 	XCTAssertThrows([slice integerAtIndex:8], @"Fails to catch out-of-bounds error.");
 }
 
-- (void)test_initialization_noInitialValueNoClear
+- (void)testInitialization_noInitialValueNoClear
 {
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:8 shouldClear:YES];
 	CBHAssertSliceState(slice, 8, NSUInteger, NO);
 
-	/// Contains is undefined, so don't check it.
+	/// Contents is undefined, so don't check it.
 }
 
-- (void)test_initialization_noCapacity
+- (void)testInitialization_noCapacity
 {
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:0];
 	CBHAssertSliceState(slice, 0, NSUInteger, YES);
 }
 
-- (void)test_initialization_noCapacityWithValue
+- (void)testInitialization_noCapacityWithValue
 {
 	NSUInteger value = 4;
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:0 initialValue:&value];
 	CBHAssertSliceState(slice, 0, NSUInteger, YES);
 }
 
-- (void)test_initialization_withValue
+- (void)testInitialization_withValue
 {
 	NSUInteger value = 4;
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:8 initialValue:&value];
@@ -73,7 +82,7 @@
 	XCTAssertThrows([slice unsignedIntegerAtIndex:8], @"Fails to catch out-of-bounds error.");
 }
 
-- (void)test_initialization_copyFromBytes
+- (void)testInitialization_copyFromBytes
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -82,7 +91,7 @@
 	CBHAssertSliceDefault(slice, NSUInteger, unsignedInteger);
 }
 
-- (void)test_initialization_ownFromBytes
+- (void)testInitialization_ownFromBytes
 {
 	const NSUInteger list0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	NSUInteger *list1 = calloc(8, sizeof(NSUInteger));
@@ -97,7 +106,7 @@
 	slice = nil;
 }
 
-- (void)test_initialization_fail
+- (void)testInitialization_fail
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -105,10 +114,8 @@
 	XCTAssertThrows([CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:NSUIntegerMax entriesFromBytes:list], @"Fails to catch overflow error.");
 }
 
-@end
 
-
-@implementation CBHSliceTests (Copying)
+#pragma mark - Copying
 
 - (void)test_copy
 {
@@ -123,12 +130,10 @@
 	XCTAssertEqualObjects(slice, copy, @"Fails to detect equality.");
 }
 
-@end
 
+#pragma mark - Equality
 
-@implementation CBHSliceTests (Equality)
-
-- (void)test_equality_same
+- (void)testEquality_same
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -142,7 +147,7 @@
 	XCTAssertTrue([slice0 isEqualToSlice:slice1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_wrongObjectType
+- (void)testEquality_wrongObjectType
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 
@@ -152,7 +157,7 @@
 	XCTAssertNotEqualObjects(slice, array, @"Fails to detect inequality.");
 }
 
-- (void)test_equality_entrySize
+- (void)testEquality_entrySize
 {
 	const NSUInteger list0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHSlice *slice0 = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list0];
@@ -166,7 +171,7 @@
 	XCTAssertFalse([slice0 isEqualToSlice:slice1], @"Fails to detect inequality.");
 }
 
-- (void)test_equality_empty
+- (void)testEquality_empty
 {
 	CBHSlice *slice0 = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:0];
 	CBHAssertSliceState(slice0, 0, NSUInteger, YES);
@@ -178,7 +183,7 @@
 	XCTAssertTrue([slice0 isEqualToSlice:slice1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_one
+- (void)testEquality_one
 {
 	const NSUInteger list[] = {4};
 
@@ -192,7 +197,7 @@
 	XCTAssertTrue([slice0 isEqualToSlice:slice1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_two
+- (void)testEquality_two
 {
 	const NSUInteger list[] = {4, 5};
 
@@ -206,7 +211,7 @@
 	XCTAssertTrue([slice0 isEqualToSlice:slice1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_small
+- (void)testEquality_small
 {
 	const NSUInteger list[] = {4, 5, 6, 7};
 
@@ -220,7 +225,7 @@
 	XCTAssertTrue([slice0 isEqualToSlice:slice1], @"Fails to detect equality.");
 }
 
-- (void)test_equality_full
+- (void)testEquality_full
 {
 	const NSUInteger list0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	const NSUInteger list1[] = {0, 1, 2, 5, 4, 3, 6, 7};
@@ -248,7 +253,7 @@
 	XCTAssertFalse([slice0 isEqualToSlice:slice3], @"Fails to detect inequality in capacity.");
 }
 
-- (void)test_equality_hash
+- (void)testEquality_hash
 {
 	const NSUInteger list0[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	const NSUInteger list1[] = {0, 1, 2, 3, 4, 5, 6};
@@ -301,12 +306,9 @@
 	XCTAssertNotEqual(hash13, hash14, @"Hash too easily collides.");
 }
 
-@end
+#pragma mark - Conversion
 
-
-@implementation CBHSliceTests (Conversion)
-
-- (void)test_data
+- (void)testConversion_data
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -316,7 +318,7 @@
 	XCTAssertEqualObjects([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], @"abcdefgh", @"Fails to convert slice to string or data.");
 }
 
-- (void)test_mutableData
+- (void)testConversion_mutableData
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -326,7 +328,7 @@
 	XCTAssertEqualObjects([[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding], @"abcdefgh", @"Fails to convert slice to string or data.");
 }
 
-- (void)test_string
+- (void)testConversion_string
 {
 	const unsigned char list[] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(unsigned char) copying:8 entriesFromBytes:list];
@@ -336,12 +338,10 @@
 	XCTAssertEqualObjects(string, @"abcdefgh", @"Fails to convert slice to string or data.");
 }
 
-@end
 
+#pragma mark - Description
 
-@implementation CBHSliceTests (Description)
-
-- (void)test_description
+- (void)testDescription
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
@@ -353,7 +353,7 @@
 	XCTAssertTrue([description compare:expected], @"Description is wrong");
 }
 
-- (void)test_debugDescription
+- (void)testDescription_debug
 {
 	const NSUInteger list[] = {0, 1, 2, 3, 4, 5, 6, 7};
 	CBHSlice *slice = [CBHSlice sliceWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];

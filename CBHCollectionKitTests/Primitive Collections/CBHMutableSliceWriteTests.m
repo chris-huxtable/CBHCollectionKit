@@ -1,8 +1,8 @@
-//  CBHMutableSliceTests+Writing.m
+//  CBHMutableSliceWriteTests.m
 //  CBHCollectionKitTests
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -16,14 +16,21 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHMutableSliceTests.h"
+@import XCTest;
+@import CBHCollectionKit.CBHMutableSlice;
+
+#import "CBHSliceTestMacros.h"
 
 
-@implementation CBHMutableSliceTests (Write)
+@interface CBHMutableSliceWriteTests : XCTestCase
+@end
 
-#pragma mark Generic
 
-- (void)test_write_generic
+@implementation CBHMutableSliceWriteTests
+
+#pragma mark - Generic
+
+- (void)testWrite_generic
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
@@ -58,9 +65,9 @@
 }
 
 
-#pragma mark Bytes
+#pragma mark - Bytes
 
-- (void)test_write_byte
+- (void)testWrite_byte
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(uint8_t) andCapacity:8];
 
@@ -90,7 +97,7 @@
 	}
 }
 
-- (void)test_write_signedByte
+- (void)testWrite_signedByte
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(int8_t) andCapacity:8];
 
@@ -120,7 +127,7 @@
 	}
 }
 
-- (void)test_write_unsignedByte
+- (void)testWrite_unsignedByte
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(uint8_t) andCapacity:8];
 
@@ -153,7 +160,7 @@
 
 #pragma mark - Named Integers
 
-- (void)test_write_integer
+- (void)testWrite_integer
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(NSInteger) andCapacity:8];
 
@@ -183,7 +190,7 @@
 	}
 }
 
-- (void)test_write_unsignedInteger
+- (void)testWrite_unsignedInteger
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(NSUInteger) andCapacity:8];
 
@@ -216,7 +223,7 @@
 
 #pragma mark - Sized Integers
 
-- (void)test_write_int8
+- (void)testWrite_int8
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(int8_t) andCapacity:8];
 
@@ -246,7 +253,7 @@
 	}
 }
 
-- (void)test_write_uint8
+- (void)testWrite_uint8
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(uint8_t) andCapacity:8];
 
@@ -277,7 +284,7 @@
 }
 
 
-- (void)test_write_int16
+- (void)testWrite_int16
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(int16_t) andCapacity:8];
 
@@ -307,7 +314,7 @@
 	}
 }
 
-- (void)test_write_uint16
+- (void)testWrite_uint16
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(uint16_t) andCapacity:8];
 
@@ -338,7 +345,7 @@
 }
 
 
-- (void)test_write_int32
+- (void)testWrite_int32
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(int32_t) andCapacity:8];
 
@@ -368,7 +375,7 @@
 	}
 }
 
-- (void)test_write_uint32
+- (void)testWrite_uint32
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(uint32_t) andCapacity:8];
 
@@ -399,7 +406,7 @@
 }
 
 
-- (void)test_write_int64
+- (void)testWrite_int64
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(int64_t) andCapacity:8];
 
@@ -429,7 +436,7 @@
 	}
 }
 
-- (void)test_write_uint64
+- (void)testWrite_uint64
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(uint64_t) andCapacity:8];
 
@@ -462,7 +469,7 @@
 
 #pragma mark - Named Floats
 
-- (void)test_write_cgfloat
+- (void)testWrite_cgfloat
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(CGFloat) andCapacity:8];
 
@@ -492,7 +499,7 @@
 	}
 }
 
-- (void)test_write_float
+- (void)testWrite_float
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(float) andCapacity:8];
 
@@ -522,7 +529,7 @@
 	}
 }
 
-- (void)test_write_double
+- (void)testWrite_double
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(double) andCapacity:8];
 
@@ -552,7 +559,7 @@
 	}
 }
 
-- (void)test_write_longDouble
+- (void)testWrite_longDouble
 {
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(long double) andCapacity:8];
 
@@ -585,7 +592,7 @@
 
 #pragma mark - Characters
 
-- (void)test_write_char
+- (void)testWrite_char
 {
 	char value = 'z';
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(char) andCapacity:8 initialValue:&value];
@@ -616,7 +623,7 @@
 	}
 }
 
-- (void)test_write_unsignedChar
+- (void)testWrite_unsignedChar
 {
 	char value = 'z';
 	CBHMutableSlice *slice = [CBHMutableSlice sliceWithEntrySize:sizeof(unsigned char) andCapacity:8 initialValue:&value];

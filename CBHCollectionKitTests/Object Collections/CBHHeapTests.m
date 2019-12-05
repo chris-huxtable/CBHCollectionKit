@@ -54,6 +54,7 @@
 static NSComparator kComparator = ^NSComparisonResult(NSString *str1, NSString *str2) {
 	return [str1 localizedStandardCompare:str2];
 };
+
 static NSArray<NSString *> *kArray = nil;
 
 + (void)initialize
@@ -79,7 +80,6 @@ static NSArray<NSString *> *kArray = nil;
 
 - (void)test_initialization_withObjects
 {
-
 	CBHHeap<NSString *> *heap = [CBHHeap heapWithComparator:kComparator andObjects:@"7", @"0", @"6", @"1", @"5", @"2", @"4", @"3", nil];
 	CBHAssertHeapState(heap, 8, 8);
 	CBHAssertHeapTeardownDefault(heap, 8);
@@ -126,11 +126,8 @@ static NSArray<NSString *> *kArray = nil;
 	XCTAssertNil([heap extractObject], @"Returned non-nil value when empty.");
 }
 
-@end
-
 
 #pragma mark - Copying
-@implementation CBHHeapTests (Copying)
 
 - (void)test_copy
 {
@@ -148,11 +145,8 @@ static NSArray<NSString *> *kArray = nil;
 	CBHAssertHeapTeardownDefault(copy, 8);
 }
 
-@end
-
 
 #pragma mark - Equality
-@implementation CBHHeapTests (Equality)
 
 - (void)test_equality
 {
@@ -348,11 +342,8 @@ static NSArray<NSString *> *kArray = nil;
 	}
 }
 
-@end
-
 
 #pragma mark - Conversion
-@implementation CBHHeapTests (Conversion)
 
 - (void)test_array
 {
@@ -393,12 +384,8 @@ static NSArray<NSString *> *kArray = nil;
 	XCTAssertEqualObjects([heap mutableOrderedSet], expected, @"Fails to detect equality.");
 }
 
-@end
-
-
 
 #pragma mark - Enqueueing and Dequeueing
-@implementation CBHHeapTests (EnqueueDequeue)
 
 - (void)test_insert
 {
@@ -506,10 +493,6 @@ static NSArray<NSString *> *kArray = nil;
 	XCTAssertEqual([values count], 0, @"Failed to dequeue zero objects correctly.");
 }
 
-@end
-
-
-@implementation CBHHeapTests (Resize)
 
 #pragma mark - Resize
 
@@ -693,10 +676,7 @@ static NSArray<NSString *> *kArray = nil;
 	CBHAssertHeapTeardownDefault(heap, 4);
 }
 
-@end
 
-
-@implementation CBHHeapTests (Description)
 #pragma mark - Description
 
 - (void)test_description

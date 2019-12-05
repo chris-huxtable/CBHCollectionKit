@@ -1,8 +1,8 @@
-//  CBHWedgeTests+Reading.m
+//  CBHWedgeReadTests.m
 //  CBHCollectionKitTests
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -16,12 +16,19 @@
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#import "CBHWedgeTests.h"
+@import XCTest;
+@import CBHCollectionKit.CBHWedge;
+
+#import "CBHWedgeTestMacros.h"
 
 
-@implementation CBHWedgeTests (Read)
+@interface CBHWedgeReadTests : XCTestCase
+@end
 
-#pragma mark Generic
+
+@implementation CBHWedgeReadTests
+
+#pragma mark - Generic
 
 - (void)test_read_generic
 {
@@ -40,7 +47,7 @@
 }
 
 
-#pragma mark Bytes
+#pragma mark - Bytes
 
 - (void)test_read_byte
 {

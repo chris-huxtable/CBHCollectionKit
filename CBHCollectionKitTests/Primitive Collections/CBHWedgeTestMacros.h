@@ -1,8 +1,8 @@
-//  CBHWedgeTests.h
+//  CBHWedgeTestMacros.h
 //  CBHCollectionKitTests
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
@@ -15,14 +15,6 @@
 //  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
 //  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 //  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-
-@import XCTest;
-
-@import CBHCollectionKit.CBHWedge;
-
-
-@interface CBHWedgeTests : XCTestCase
-@end
 
 
 #define CBHAssertWedgeState(aWedge, aCapacity, aCount, aType, anEmpty)\
