@@ -5,23 +5,24 @@
 [![licence](https://img.shields.io/badge/licence-ISC-lightgrey.svg?cacheSeconds=2592000)](https://github.com/chris-huxtable/CBHCollectionKit/blob/master/LICENSE)
 [![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg?cacheSeconds=2592000)](https://github.com/chris-huxtable/CBHCollectionKit)
 
-A collection of easy-to-use  and safer primitive and object based collections.
+A collection of easy-to-use  and safer primitive and object-based collections.
 
-**Note: This Framework is still a work-in-progress** and is missing most documentation. Performance is also excepted to  improve. 
+**Note: This Framework is still a work-in-progress** and is missing most documentation.
 
 
 ## Outline
 
 `CBHCollectionKit` provides classes to manage collections of primitive and object values.
 
+
 ### `CBHSlice` and `CBHMutableSlice`
 
-A Slice can be thought of an abstraction over a c array. It makes for safer use by performing bounds checking and by reducing user code that is more likely to contain mistakes. 
+A Slice is a primitive collection that can be thought of an abstraction around a c array. It makes for safer use by performing bounds checking and by reducing  code that is more likely to contain mistakes. 
 
 
 ### `CBHWedge`
 
-A Wedge, is a dynamically sized slice. It is intended to handle growth for the user, reducing complexity and the likelihood for error.
+A Wedge is a  dynamically sized primitive collection. It is intended to handle growth for the user, reducing complexity and the likelihood for error.
 
 
 ### `CBHStack`
