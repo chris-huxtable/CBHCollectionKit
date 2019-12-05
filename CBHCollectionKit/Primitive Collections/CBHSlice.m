@@ -44,28 +44,28 @@
 
 + (instancetype)sliceWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity
 {
-	return [(CBHSlice *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity];
+	return [[(CBHSlice *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity] autorelease];
 }
 
 + (instancetype)sliceWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity shouldClear:(BOOL)shouldClear
 {
-	return [(CBHSlice *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity shouldClear:shouldClear];
+	return [[(CBHSlice *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity shouldClear:shouldClear] autorelease];
 }
 
 + (instancetype)sliceWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity initialValue:(const void *)value
 {
-	return [(CBHSlice *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity initialValue:value];
+	return [[(CBHSlice *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity initialValue:value] autorelease];
 }
 
 
 + (instancetype)sliceWithEntrySize:(size_t)entrySize copying:(NSUInteger)count entriesFromBytes:(const void *)bytes
 {
-	return [(CBHSlice *)[self alloc] initWithEntrySize:entrySize copying:count entriesFromBytes:bytes];
+	return [[(CBHSlice *)[self alloc] initWithEntrySize:entrySize copying:count entriesFromBytes:bytes] autorelease];
 }
 
 + (instancetype)sliceWithEntrySize:(size_t)entrySize owning:(NSUInteger)count entriesFromBytes:(void *)bytes
 {
-	return [(CBHSlice *)[self alloc] initWithEntrySize:entrySize owning:count entriesFromBytes:bytes];
+	return [[(CBHSlice *)[self alloc] initWithEntrySize:entrySize owning:count entriesFromBytes:bytes] autorelease];
 }
 
 
@@ -124,6 +124,8 @@
 - (void)dealloc
 {
 	CBHSlice_dealloc(&_slice);
+
+	[super dealloc];
 }
 
 
@@ -163,7 +165,7 @@
 - (id)copyWithZone:(NSZone *)zone
 {
 	/// Object is immutable. Return self.
-	return self;
+	return [self retain];
 }
 
 @end
@@ -264,7 +266,7 @@
 
 - (NSString *)stringWithEncoding:(NSStringEncoding)encoding
 {
-	return [[NSString alloc] initWithBytes:_slice._data length:_slice._capacity encoding:encoding];
+	return [[[NSString alloc] initWithBytes:_slice._data length:_slice._capacity encoding:encoding] autorelease];
 }
 
 @end

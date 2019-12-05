@@ -28,15 +28,15 @@
 #define _nextCapacity(aCapacity) (size_t)ceil((double)(aCapacity) * GROWTH_FACTOR)
 
 #define _pointerAtIndex(aQueue, anIndex) CBHQueue_pointerAtIndex((aQueue), (anIndex))
-#define _objectAtIndex(aQueue, anIndex) ((__bridge id __unsafe_unretained)_pointerAtIndex((aQueue), (anIndex)))
+#define _objectAtIndex(aQueue, anIndex) ((id)_pointerAtIndex((aQueue), (anIndex)))
 
 #define _insertObject(aHeap, anObject)\
 {\
-	CFBridgingRetain(anObject);\
+	CFRetain(anObject);\
 	CBHHeap_insertValue((aHeap), &(anObject), _comparator);\
 }
-#define _extractObject() CFBridgingRelease(CBHHeap_extractValue(&_queue, _comparator))
-#define _peekObject() (__bridge id __unsafe_unretained)CBHQueue_peek(&_queue)
+#define _extractObject() [(id)CBHHeap_extractValue(&_queue, _comparator) autorelease]
+#define _peekObject() (id)CBHQueue_peek(&_queue)
 
 #define _guardNotEmpty(retVal) if ( _queue._count <= 0 ) return (retVal)
 
@@ -65,12 +65,12 @@ NS_ASSUME_NONNULL_END
 
 + (instancetype)heapWithComparator:(NSComparator)comparator
 {
-	return [(CBHHeap *)[self alloc] initWithComparator:comparator andCapacity:DEFAULT_CAPACITY];
+	return [[(CBHHeap *)[self alloc] initWithComparator:comparator andCapacity:DEFAULT_CAPACITY] autorelease];
 }
 
 + (instancetype)heapWithComparator:(NSComparator)comparator andCapacity:(NSUInteger)capacity
 {
-	return [(CBHHeap *)[self alloc] initWithComparator:comparator andCapacity:capacity];
+	return [[(CBHHeap *)[self alloc] initWithComparator:comparator andCapacity:capacity] autorelease];
 }
 
 + (instancetype)heapWithComparator:(NSComparator)comparator andObjects:(id)object, ...
@@ -81,23 +81,23 @@ NS_ASSUME_NONNULL_END
 	CBHHeap *heap = [(CBHHeap *)[self alloc] initWithComparator:comparator firstObject:object andArgumentList:arguments];
 
 	va_end(arguments);
-	return heap;
+	return [heap autorelease];
 }
 
 
 + (instancetype)heapWithComparator:(NSComparator)comparator andArray:(NSArray *)array
 {
-	return [(CBHHeap *)[self alloc] initWithComparator:comparator andArray:array];
+	return [[(CBHHeap *)[self alloc] initWithComparator:comparator andArray:array] autorelease];
 }
 
 + (instancetype)heapWithComparator:(NSComparator)comparator andSet:(NSSet *)set
 {
-	return [(CBHHeap *)[self alloc] initWithComparator:comparator andSet:set];
+	return [[(CBHHeap *)[self alloc] initWithComparator:comparator andSet:set] autorelease];
 }
 
 + (instancetype)heapWithComparator:(NSComparator)comparator andEnumerator:(NSEnumerator *)enumerator
 {
-	return [(CBHHeap *)[self alloc] initWithComparator:comparator andEnumerator:enumerator];
+	return [[(CBHHeap *)[self alloc] initWithComparator:comparator andEnumerator:enumerator] autorelease];
 }
 
 
@@ -134,10 +134,11 @@ NS_ASSUME_NONNULL_END
 {
 	if ( (self = [self initWithComparator:comparator]) )
 	{
-		while ( object )
+		id __nullable current = object;
+		while ( current )
 		{
-			_insertObject(&_queue, object);
-			object = va_arg(argList, id);
+			_insertObject(&_queue, current);
+			current = va_arg(argList, id);
 		}
 
 		va_end(argList);
@@ -183,6 +184,8 @@ NS_ASSUME_NONNULL_END
 {
 	[self removeAllObjects];
 	CBHQueue_dealloc(&_queue);
+
+	[super dealloc];
 }
 
 
@@ -398,11 +401,12 @@ NS_ASSUME_NONNULL_END
 	va_list arguments;
 	va_start(arguments, object);
 
-	while ( object )
+	id __nullable current = object;
+	while ( current )
 	{
 		// TODO: Only balance at end?
-		_insertObject(&_queue, object);
-		object = va_arg(arguments, id);
+		_insertObject(&_queue, current);
+		current = va_arg(arguments, id);
 	}
 
 	va_end(arguments);

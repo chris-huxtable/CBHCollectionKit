@@ -48,17 +48,17 @@ NS_ASSUME_NONNULL_END
 #define _growIfNeeded() if ( _stack._capacity <= _stack._count ) { CBHSlice_setCapacity((CBHSlice_t *)&_stack, _nextCapacity(_stack._capacity), NO); }
 
 #define _pointerAtIndex(aSlice, anIndex) CBHSlice_pointerAtOffset((CBHSlice_t *)(aSlice), (anIndex))
-#define _objectAtIndex(aSlice, anIndex) ((__bridge __unsafe_unretained id)_pointerAtIndex((aSlice), (anIndex)))
+#define _objectAtIndex(aSlice, anIndex) ((id)_pointerAtIndex((aSlice), (anIndex)))
 
-#define _objectArray() (id __unsafe_unretained *)_stack._data
+#define _objectArray() (id *)_stack._data
 
 #define _pushObject(aQueue, anObject)\
 {\
-	CFBridgingRetain(anObject);\
+	CFRetain(anObject);\
 	CBHStack_pushValue((aQueue), &(anObject));\
 }
-#define _popObject() CFBridgingRelease(CBHStack_popValue(&_stack))
-#define _peekObject() (__bridge __unsafe_unretained id)CBHStack_peekValue(&_stack)
+#define _popObject() [(id)CBHStack_popValue(&_stack) autorelease]
+#define _peekObject() (id)CBHStack_peekValue(&_stack)
 
 #define _guardNotEmpty(retVal) if ( _stack._count <= 0 ) return (retVal)
 #define _guardValidIndex(anIndex, retVal) if ( (anIndex) >= _stack._count ) return (retVal)
@@ -68,12 +68,12 @@ NS_ASSUME_NONNULL_END
 
 + (instancetype)stack
 {
-	return [(CBHStack *)[self alloc] initWithCapacity:DEFAULT_CAPACITY];
+	return [[(CBHStack *)[self alloc] initWithCapacity:DEFAULT_CAPACITY] autorelease];
 }
 
 + (instancetype)stackWithCapacity:(NSUInteger)capacity
 {
-	return [(CBHStack *)[self alloc] initWithCapacity:capacity];
+	return [[(CBHStack *)[self alloc] initWithCapacity:capacity] autorelease];
 }
 
 + (instancetype)stackWithObjects:(id)object, ...
@@ -84,23 +84,23 @@ NS_ASSUME_NONNULL_END
 	CBHStack *stack = [(CBHStack *)[self alloc] initWithFirstObject:object andArgumentList:arguments];
 
 	va_end(arguments);
-	return stack;
+	return [stack autorelease];
 }
 
 
 + (instancetype)stackWithArray:(NSArray *)array
 {
-	return [(CBHStack *)[self alloc] initWithArray:array];
+	return [[(CBHStack *)[self alloc] initWithArray:array] autorelease];
 }
 
 + (instancetype)stackWithOrderedSet:(NSOrderedSet *)set
 {
-	return [(CBHStack *)[self alloc] initWithOrderedSet:set];
+	return [[(CBHStack *)[self alloc] initWithOrderedSet:set] autorelease];
 }
 
 + (instancetype)stackWithEnumerator:(NSEnumerator *)enumerator
 {
-	return [(CBHStack *)[self alloc] initWithEnumerator:enumerator];
+	return [[(CBHStack *)[self alloc] initWithEnumerator:enumerator] autorelease];
 }
 
 
@@ -136,10 +136,11 @@ NS_ASSUME_NONNULL_END
 {
 	if ( (self = [self init]) )
 	{
-		while ( object )
+		id __nullable current = object;
+		while ( current )
 		{
-			[self pushObject:object];
-			object = va_arg(argList, id);
+			[self pushObject:current];
+			current = va_arg(argList, id);
 		}
 
 		va_end(argList);
@@ -186,6 +187,8 @@ NS_ASSUME_NONNULL_END
 {
 	[self removeAllObjects];
 	CBHStack_dealloc(&_stack);
+
+	[super dealloc];
 }
 
 
@@ -409,10 +412,11 @@ NS_ASSUME_NONNULL_END
 	va_list arguments;
 	va_start(arguments, object);
 
-	while ( object )
+	id __nullable current = object;
+	while ( current )
 	{
-		[self pushObject:object];
-		object = va_arg(arguments, id);
+		[self pushObject:current];
+		current = va_arg(arguments, id);
 	}
 
 	va_end(arguments);

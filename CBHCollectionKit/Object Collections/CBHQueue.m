@@ -26,17 +26,17 @@
 #define _nextCapacity(aCapacity) (size_t)ceil((double)(aCapacity) * GROWTH_FACTOR)
 
 #define _pointerAtIndex(aQueue, anIndex) CBHQueue_pointerAtIndex((aQueue), (anIndex))
-#define _objectAtIndex(aQueue, anIndex) ((__bridge id __unsafe_unretained)_pointerAtIndex((aQueue), (anIndex)))
+#define _objectAtIndex(aQueue, anIndex) ((id)_pointerAtIndex((aQueue), (anIndex)))
 
-#define _objectArray() (id __unsafe_unretained *)CBHQueue_pointerToIndex(&_queue, 0)
+#define _objectArray() (id *)CBHQueue_pointerToIndex(&_queue, 0)
 
 #define _enqueueObject(aQueue, anObject)\
 {\
-	CFBridgingRetain(anObject);\
+	CFRetain(anObject);\
 	CBHQueue_enqueue((aQueue), &(anObject));\
 }
-#define _dequeueObject() CFBridgingRelease(CBHQueue_dequeue(&_queue))
-#define _peekObject() (__bridge id __unsafe_unretained)CBHQueue_peek(&_queue)
+#define _dequeueObject() [(id)CBHQueue_dequeue(&_queue) autorelease];
+#define _peekObject() (id)CBHQueue_peek(&_queue)
 
 #define _guardNotEmpty(retVal) if ( _queue._count <= 0 ) return (retVal)
 
@@ -59,12 +59,12 @@ NS_ASSUME_NONNULL_END
 
 + (instancetype)queue
 {
-	return [(CBHQueue *)[self alloc] initWithCapacity:DEFAULT_CAPACITY];
+	return [[(CBHQueue *)[self alloc] initWithCapacity:DEFAULT_CAPACITY] autorelease];
 }
 
 + (instancetype)queueWithCapacity:(NSUInteger)capacity
 {
-	return [(CBHQueue *)[self alloc] initWithCapacity:capacity];
+	return [[(CBHQueue *)[self alloc] initWithCapacity:capacity] autorelease];
 }
 
 + (instancetype)queueWithObjects:(id)object, ...
@@ -75,23 +75,23 @@ NS_ASSUME_NONNULL_END
 	CBHQueue *queue = [(CBHQueue *)[self alloc] initWithFirstObject:object andArgumentList:arguments];
 
 	va_end(arguments);
-	return queue;
+	return [queue autorelease];
 }
 
 
 + (instancetype)queueWithArray:(NSArray *)array
 {
-	return [(CBHQueue *)[self alloc] initWithArray:array];
+	return [[(CBHQueue *)[self alloc] initWithArray:array] autorelease];
 }
 
 + (instancetype)queueWithOrderedSet:(NSOrderedSet *)set
 {
-	return [(CBHQueue *)[self alloc] initWithOrderedSet:set];
+	return [[(CBHQueue *)[self alloc] initWithOrderedSet:set] autorelease];
 }
 
 + (instancetype)queueWithEnumerator:(NSEnumerator *)enumerator
 {
-	return [(CBHQueue *)[self alloc] initWithEnumerator:enumerator];
+	return [[(CBHQueue *)[self alloc] initWithEnumerator:enumerator] autorelease];
 }
 
 
@@ -127,10 +127,11 @@ NS_ASSUME_NONNULL_END
 {
 	if ( (self = [self init]) )
 	{
-		while ( object )
+		id __nullable current = object;
+		while ( current )
 		{
-			[self enqueueObject:object];
-			object = va_arg(argList, id);
+			[self enqueueObject:current];
+			current = va_arg(argList, id);
 		}
 
 		va_end(argList);
@@ -177,6 +178,8 @@ NS_ASSUME_NONNULL_END
 {
 	[self removeAllObjects];
 	CBHQueue_dealloc(&_queue);
+
+	[super dealloc];
 }
 
 
@@ -442,10 +445,11 @@ NS_ASSUME_NONNULL_END
 	va_list arguments;
 	va_start(arguments, object);
 
-	while ( object )
+	id __nullable current = object;
+	while ( current )
 	{
-		_enqueueObject(&_queue, object);
-		object = va_arg(arguments, id);
+		_enqueueObject(&_queue, current);
+		current = va_arg(arguments, id);
 	}
 
 	va_end(arguments);

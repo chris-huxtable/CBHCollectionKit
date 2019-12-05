@@ -68,33 +68,33 @@
 
 + (instancetype)wedgeWithEntrySize:(size_t)entrySize
 {
-	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize];
+	return [[(CBHWedge *)[self alloc] initWithEntrySize:entrySize] autorelease];
 }
 
 + (instancetype)wedgeWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity
 {
-	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity];
+	return [[(CBHWedge *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity] autorelease];
 }
 
 + (instancetype)wedgeWithEntrySize:(size_t)entrySize copying:(NSUInteger)count entriesFromBytes:(const void *)bytes
 {
-	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize copying:count entriesFromBytes:bytes];
+	return [[(CBHWedge *)[self alloc] initWithEntrySize:entrySize copying:count entriesFromBytes:bytes] autorelease];
 }
 
 + (instancetype)wedgeWithEntrySize:(size_t)entrySize andCapacity:(NSUInteger)capacity copying:(NSUInteger)count entriesFromBytes:(const void *)bytes
 {
-	return [(CBHWedge *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity copying:count entriesFromBytes:bytes];
+	return [[(CBHWedge *)[self alloc] initWithEntrySize:entrySize andCapacity:capacity copying:count entriesFromBytes:bytes] autorelease];
 }
 
 
 + (instancetype)wedgeWithSlice:(CBHSlice *)slice
 {
-	return [(CBHWedge *)[self alloc] initWithSlice:slice];
+	return [[(CBHWedge *)[self alloc] initWithSlice:slice] autorelease];
 }
 
 + (instancetype)wedgeWithSlice:(CBHSlice *)slice andCapacity:(NSUInteger)capacity
 {
-	return [(CBHWedge *)[self alloc] initWithSlice:slice andCapacity:capacity];
+	return [[(CBHWedge *)[self alloc] initWithSlice:slice andCapacity:capacity] autorelease];
 }
 
 
@@ -149,6 +149,8 @@
 - (void)dealloc
 {
 	CBHStack_dealloc(&_stack);
+
+	[super dealloc];
 }
 
 
@@ -295,7 +297,7 @@
 
 - (NSString *)stringWithEncoding:(NSStringEncoding)encoding
 {
-	return [[NSString alloc] initWithBytes:_stack._data length:_stack._count encoding:encoding];
+	return [[[NSString alloc] initWithBytes:_stack._data length:_stack._count encoding:encoding] autorelease];
 }
 
 @end
