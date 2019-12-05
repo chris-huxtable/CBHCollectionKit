@@ -177,7 +177,6 @@ void CBHSlice_swapValuesAtOffsets(const CBHSlice_t *slice, const NSUInteger a, c
 BOOL CBHSlice_swapValuesInRange(const CBHSlice_t *slice, const NSUInteger a, const NSUInteger b, const NSUInteger length)
 {
 	if ( a == b ) return NO;
-
 	_guardOffsetInBounds(a);
 
 	NSUInteger a_last = a + length - 1;

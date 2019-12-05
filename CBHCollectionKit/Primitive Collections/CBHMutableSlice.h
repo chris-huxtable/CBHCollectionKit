@@ -43,6 +43,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Resizing
+
 @interface CBHMutableSlice (Resizing)
 
 - (void)resize:(NSUInteger)capacity;
@@ -119,6 +120,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Named Float Mutators
+
 @interface CBHMutableSlice (NamedFloatMutators)
 
 - (void)setCGFloat:(CGFloat)value atIndex:(NSUInteger)index;
@@ -131,6 +133,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Character Mutators
+
 @interface CBHMutableSlice (CharacterMutators)
 
 - (void)setChar:(char)value atIndex:(NSUInteger)index;
@@ -140,6 +143,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 #pragma mark - Mutable Copying
+
 @interface CBHSlice (MutableCopying) <NSMutableCopying>
 
 - (id)mutableCopyWithZone:(nullable NSZone *)zone;

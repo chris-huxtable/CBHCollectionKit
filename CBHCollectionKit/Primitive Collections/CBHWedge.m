@@ -384,7 +384,7 @@
 @end
 
 
-#pragma mark - Clearing wedge
+#pragma mark - Clearing Wedge
 @implementation CBHWedge (Clearing)
 
 - (void)removeAll

@@ -511,7 +511,7 @@ static NSArray<NSString *> *kArray = nil;
 
 @implementation CBHHeapTests (Resize)
 
-#pragma mark - Shrink
+#pragma mark - Resize
 
 - (void)test_resize_shrinkEmpty
 {
@@ -696,8 +696,8 @@ static NSArray<NSString *> *kArray = nil;
 @end
 
 
-#pragma mark - Enqueueing and Dequeueing
 @implementation CBHHeapTests (Description)
+#pragma mark - Description
 
 - (void)test_description
 {

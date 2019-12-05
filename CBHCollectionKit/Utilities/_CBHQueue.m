@@ -124,7 +124,7 @@ inline BOOL CBHQueue_growTo(CBHQueue_t *queue, const NSUInteger newCapacity)
 	NSUInteger oldCapacity = queue->_capacity;
 	CBHSlice_setCapacity((CBHSlice_t *)queue, newCapacity, NO);
 
-	/// No Translation Nessissary
+	/// No Translation Necessary
 	if ( queue->_offset == 0 ) return YES;
 
 	/// If offset is in the later half of the slice.
