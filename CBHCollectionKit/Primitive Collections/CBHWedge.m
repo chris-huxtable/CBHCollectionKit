@@ -357,8 +357,8 @@
 @end
 
 
-#pragma mark - Swapping and Copying Entries
-@implementation CBHWedge (SwapCopy)
+#pragma mark - Swapping and Duplicating Entries
+@implementation CBHWedge (SwapDuplicate)
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b
 {
@@ -371,12 +371,12 @@
 }
 
 
-- (void)copyValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst
+- (void)duplicateValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst
 {
 	CBHSlice_copyValueAtOffset((CBHSlice_t *)&_stack, src, dst);
 }
 
-- (void)copyValuesInRange:(NSRange)range toIndex:(NSUInteger)dst
+- (void)duplicateValuesInRange:(NSRange)range toIndex:(NSUInteger)dst
 {
 	CBHSlice_copyValuesInRange((CBHSlice_t *)&_stack, range.location, dst, range.length);
 }

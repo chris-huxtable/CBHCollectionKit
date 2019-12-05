@@ -60,8 +60,8 @@
 @end
 
 
-#pragma mark - Swapping and Copying Entries
 @implementation CBHMutableSlice (SwapCopy)
+#pragma mark - Swapping and Duplicating Entries
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b
 {
@@ -74,12 +74,12 @@
 }
 
 
-- (void)copyValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst
+- (void)duplicateValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst
 {
 	CBHSlice_copyValueAtOffset(&_slice, src, dst);
 }
 
-- (void)copyValuesInRange:(NSRange)range toIndex:(NSUInteger)dst
+- (void)duplicateValuesInRange:(NSRange)range toIndex:(NSUInteger)dst
 {
 	CBHSlice_copyValuesInRange(&_slice, range.location, dst, range.length);
 }

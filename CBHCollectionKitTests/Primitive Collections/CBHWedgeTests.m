@@ -559,7 +559,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
 	CBHAssertWedgeState(wedge, 8, 8, NSUInteger, NO);
 
-	[wedge copyValueAtIndex:0 toIndex:4];
+	[wedge duplicateValueAtIndex:0 toIndex:4];
 
 	/// Check new values
 	for (NSUInteger i = 0; i < 8; ++i)
@@ -582,7 +582,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
 	CBHAssertWedgeState(wedge, 8, 8, NSUInteger, NO);
 
-	[wedge copyValuesInRange:NSMakeRange(0, 4) toIndex:4];
+	[wedge duplicateValuesInRange:NSMakeRange(0, 4) toIndex:4];
 
 	/// Check new values
 	for (NSUInteger i = 0; i < 4; ++i)
@@ -599,7 +599,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
 	CBHAssertWedgeState(wedge, 8, 8, NSUInteger, NO);
 
-	[wedge copyValueAtIndex:4 toIndex:4];
+	[wedge duplicateValueAtIndex:4 toIndex:4];
 
 	CBHAssertWedgeDefault(wedge, NSUInteger, unsignedInteger);
 }
@@ -610,7 +610,7 @@
 	CBHWedge *wedge = [CBHWedge wedgeWithEntrySize:sizeof(NSUInteger) copying:8 entriesFromBytes:list];
 	CBHAssertWedgeState(wedge, 8, 8, NSUInteger, NO);
 
-	[wedge copyValuesInRange:NSMakeRange(4, 4) toIndex:4];
+	[wedge duplicateValuesInRange:NSMakeRange(4, 4) toIndex:4];
 
 	CBHAssertWedgeDefault(wedge, NSUInteger, unsignedInteger);
 }

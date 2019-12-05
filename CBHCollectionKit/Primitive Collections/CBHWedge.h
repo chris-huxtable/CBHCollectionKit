@@ -114,14 +114,14 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-#pragma mark - Swapping and Copying Entries
-@interface CBHWedge (SwapCopy)
+#pragma mark - Swapping and Duplicating Entries
+@interface CBHWedge (SwapDuplicate)
 
 - (void)swapValuesAtIndex:(NSUInteger)a andIndex:(NSUInteger)b;
 - (BOOL)swapValuesInRange:(NSRange)a andIndex:(NSUInteger)b;
 
-- (void)copyValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst;
-- (void)copyValuesInRange:(NSRange)range toIndex:(NSUInteger)dst;
+- (void)duplicateValueAtIndex:(NSUInteger)src toIndex:(NSUInteger)dst;
+- (void)duplicateValuesInRange:(NSRange)range toIndex:(NSUInteger)dst;
 
 @end
 

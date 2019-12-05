@@ -182,14 +182,14 @@
 @end
 
 
-@implementation CBHMutableSliceTests (CopyValues)
+@implementation CBHMutableSliceTests (DuplicateValues)
 
-- (void)test_copyValues
+- (void)test_duplicateValues
 {
 	CBHMutableSliceCreateDefault(slice, NSUInteger);
 	CBHAssertSliceDefault(slice, NSUInteger, unsignedInteger);
 
-	[slice copyValueAtIndex:0 toIndex:4];
+	[slice duplicateValueAtIndex:0 toIndex:4];
 
 	/// Check new values
 	for (NSUInteger i = 0; i < 8; ++i)
@@ -204,7 +204,7 @@
 	CBHMutableSliceCreateDefault(slice, NSUInteger);
 	CBHAssertSliceDefault(slice, NSUInteger, unsignedInteger);
 
-	[slice copyValuesInRange:NSMakeRange(0, 4) toIndex:4];
+	[slice duplicateValuesInRange:NSMakeRange(0, 4) toIndex:4];
 
 	/// Check new values
 	for (NSUInteger i = 0; i < 4; ++i)
