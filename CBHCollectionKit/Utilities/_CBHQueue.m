@@ -78,7 +78,7 @@ void CBHQueue_dealloc(CBHQueue_t *queue)
 
 inline void CBHQueue_enqueue(CBHQueue_t *queue, const void *object)
 {
-	if ( queue->_capacity <= queue->_count ) CBHQueue_growTo(queue, _nextCapacity(queue->_capacity));
+	if ( queue->_capacity <= queue->_count ) { CBHQueue_growTo(queue, _nextCapacity(queue->_capacity)); }
 	CBHSlice_setValueAtOffset((CBHSlice_t *)queue, _offsetOfIndex(queue->_count), object);
 	++(queue->_count);
 }
