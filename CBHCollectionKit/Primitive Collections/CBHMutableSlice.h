@@ -1,8 +1,8 @@
 //  CBHMutableSlice.h
 //  CBHCollectionKit
 //
-//  Created by Christian Huxtable, June 2019.
-//  Copyright (c) 2019, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, June 2019.
+//  Copyright (c) 2019 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above

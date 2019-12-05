@@ -1,8 +1,8 @@
 //  _CBHSlice.m
 //  CBHCollectionKit
 //
-//  Created by Christian Huxtable, November 2018.
-//  Copyright (c) 2018, Christian Huxtable <chris@huxtable.ca>
+//  Created by Christian Huxtable <chris@huxtable.ca>, November 2018.
+//  Copyright (c) 2018 Christian Huxtable. All rights reserved.
 //
 //  Permission to use, copy, modify, and/or distribute this software for any
 //  purpose with or without fee is hereby granted, provided that the above
