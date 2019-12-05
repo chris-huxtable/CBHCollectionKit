@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)stack;
 + (instancetype)stackWithCapacity:(NSUInteger)capacity;
-+ (instancetype)stackWithObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)stackWithObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 
 + (instancetype)stackWithArray:(NSArray<ObjectType> *)array;
 + (instancetype)stackWithOrderedSet:(NSOrderedSet<ObjectType> *)set;
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init;
 - (instancetype)initWithCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
+- (instancetype)initWithObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 
 - (instancetype)initWithArray:(NSArray<ObjectType> *)array;
 - (instancetype)initWithOrderedSet:(NSOrderedSet<ObjectType> *)set;
@@ -127,7 +127,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)pushObject:(ObjectType)object;
 - (nullable ObjectType)popObject;
 
-- (void)pushObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
+- (void)pushObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 - (void)pushObjectsFromArray:(NSArray<ObjectType> *)array;
 - (void)pushObjectsFromOrderedSet:(NSOrderedSet<ObjectType> *)set;
 - (void)pushObjectsFromEnumerator:(id <NSFastEnumeration>)enumerator;

@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)queue;
 + (instancetype)queueWithCapacity:(NSUInteger)capacity;
-+ (instancetype)queueWithObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)queueWithObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 
 + (instancetype)queueWithArray:(NSArray<ObjectType> *)array;
 + (instancetype)queueWithOrderedSet:(NSOrderedSet<ObjectType> *)set;
@@ -46,7 +46,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)init;
 - (instancetype)initWithCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
+- (instancetype)initWithObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 
 - (instancetype)initWithArray:(NSArray<ObjectType> *)array;
 - (instancetype)initWithOrderedSet:(NSOrderedSet<ObjectType> *)set;
@@ -126,7 +126,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable ObjectType)dequeueObject;
 
-- (void)enqueueObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
+- (void)enqueueObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 - (void)enqueueObjectsFromArray:(NSArray<ObjectType> *)array;
 - (void)enqueueObjectsFromOrderedSet:(NSOrderedSet<ObjectType> *)set;
 - (void)enqueueObjectsFromEnumerator:(id <NSFastEnumeration>)enumerator;

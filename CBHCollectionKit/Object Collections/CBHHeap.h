@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)heapWithComparator:(NSComparator)comparator;
 + (instancetype)heapWithComparator:(NSComparator)comparator andCapacity:(NSUInteger)capacity;
-+ (instancetype)heapWithComparator:(NSComparator)comparator andObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
++ (instancetype)heapWithComparator:(NSComparator)comparator andObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 
 + (instancetype)heapWithComparator:(NSComparator)comparator andArray:(NSArray<ObjectType> *)array;
 + (instancetype)heapWithComparator:(NSComparator)comparator andSet:(NSSet<ObjectType> *)set;
@@ -48,7 +48,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithComparator:(NSComparator)comparator;
 - (instancetype)initWithComparator:(NSComparator)comparator andCapacity:(NSUInteger)capacity NS_DESIGNATED_INITIALIZER;
-- (instancetype)initWithComparator:(NSComparator)comparator andObjects:(id)object, ... NS_REQUIRES_NIL_TERMINATION;
+- (instancetype)initWithComparator:(NSComparator)comparator andObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 
 - (instancetype)initWithComparator:(NSComparator)comparator andArray:(NSArray<ObjectType> *)array;
 - (instancetype)initWithComparator:(NSComparator)comparator andSet:(NSSet<ObjectType> *)set;
@@ -117,7 +117,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CBHHeap<ObjectType> (Addition)
 
 - (void)insertObject:(ObjectType)object;
-- (void)insertObjects:(ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
+- (void)insertObjects:(nullable ObjectType)object, ... NS_REQUIRES_NIL_TERMINATION;
 
 - (void)insertObjectsFromArray:(NSArray<ObjectType> *)array;
 - (void)insertObjectsFromSet:(NSSet<ObjectType> *)set;
