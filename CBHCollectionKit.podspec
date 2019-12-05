@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.version                = '0.1.0'
   spec.module_name            = 'CBHCollectionKit'
 
-  spec.summary                = 'A collection of easy-to-use  and safer primitive and object based collections.'
+  spec.summary                = 'A collection of easy-to-use and safer primitive and object based collections.'
   spec.homepage               = 'https://github.com/chris-huxtable/CBHCollectionKit'
 
   spec.license                = { :type => 'ISC', :file => 'LICENSE' }
@@ -21,5 +21,7 @@ Pod::Spec.new do |spec|
   spec.public_header_files    = 'CBHCollectionKit/**/*.h'
   spec.private_header_files   = 'CBHCollectionKit/**/_*.h'
   spec.source_files           = 'CBHCollectionKit/*.{h,m}'
+
+  spec.dependency 'CBHMemoryKit'
 
 end
