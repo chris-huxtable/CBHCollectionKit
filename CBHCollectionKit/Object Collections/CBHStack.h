@@ -97,8 +97,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (nullable ObjectType)peekAtObject;
 
-- (nullable ObjectType)objectFromTop:(NSUInteger)index;
-- (nullable ObjectType)objectFromBottom:(NSUInteger)index;
+- (nullable ObjectType)peekAtObjectFromTop:(NSUInteger)index;
+- (nullable ObjectType)peekAtObjectFromBottom:(NSUInteger)index;
 
 
 #pragma mark - Mutators

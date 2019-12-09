@@ -488,7 +488,7 @@
 	XCTAssertNil([stack popObject], @"Returned non-nil value when empty.");
 }
 
-- (void)test_objectFromTop
+- (void)test_peekAtObjectFromTop
 {
 	CBHStack<NSString *> *stack = [CBHStack stackWithArray:@[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7"]];
 	CBHAssertStackState(stack, 8, 8);
@@ -497,12 +497,12 @@
 	for (NSInteger i = 7; i >= 0; --i)
 	{
 		NSString *expected = [NSString stringWithFormat:@"%ld", i];
-		XCTAssertEqualObjects([stack objectFromTop:(NSUInteger)(7 - i)], expected, @"Entry is incorrect at top.");
+		XCTAssertEqualObjects([stack peekAtObjectFromTop:(NSUInteger)(7 - i)], expected, @"Entry is incorrect at top.");
 	}
-	XCTAssertNil([stack objectFromTop:8],  @"Returned non-nil value when empty.");
+	XCTAssertNil([stack peekAtObjectFromTop:8],  @"Returned non-nil value when empty.");
 }
 
-- (void)test_objectFromBottom
+- (void)test_peekAtObjectFromBottom
 {
 	CBHStack<NSString *> *stack = [CBHStack stackWithArray:@[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7"]];
 	CBHAssertStackState(stack, 8, 8);
@@ -511,9 +511,9 @@
 	for (NSInteger i = 0; i < 8; ++i)
 	{
 		NSString *expected = [NSString stringWithFormat:@"%ld", i];
-		XCTAssertEqualObjects([stack objectFromBottom:(NSUInteger)i], expected, @"Entry is incorrect at top.");
+		XCTAssertEqualObjects([stack peekAtObjectFromBottom:(NSUInteger)i], expected, @"Entry is incorrect at top.");
 	}
-	XCTAssertNil([stack objectFromBottom:8],  @"Returned non-nil value when empty.");
+	XCTAssertNil([stack peekAtObjectFromBottom:8],  @"Returned non-nil value when empty.");
 }
 
 @end

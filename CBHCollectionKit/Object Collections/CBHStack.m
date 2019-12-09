@@ -355,7 +355,7 @@ NS_ASSUME_NONNULL_END
 	return _peekObject();
 }
 
-- (id)objectFromTop:(NSUInteger)index
+- (id)peekAtObjectFromTop:(NSUInteger)index
 {
 	if ( index >= _stack._count ) return nil;
 	index = _stack._count - 1 - index;
@@ -363,7 +363,7 @@ NS_ASSUME_NONNULL_END
 	return _objectAtIndex(&_stack, index);
 }
 
-- (id)objectFromBottom:(NSUInteger)index
+- (id)peekAtObjectFromBottom:(NSUInteger)index
 {
 	_guardValidIndex(index, nil);
 	return _objectAtIndex(&_stack, index);
