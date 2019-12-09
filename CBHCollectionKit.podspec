@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name                   = 'CBHCollectionKit'
-  spec.version                = '0.1.1'
+  spec.version                = '0.1.2'
   spec.module_name            = 'CBHCollectionKit'
 
   spec.summary                = 'A collection of easy-to-use and safer primitive and object based collections.'
