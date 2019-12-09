@@ -20,7 +20,7 @@ Pod::Spec.new do |spec|
 
   spec.public_header_files    = 'CBHCollectionKit/**/*.h'
   spec.private_header_files   = 'CBHCollectionKit/**/_*.h'
-  spec.source_files           = 'CBHCollectionKit/*.{h,m}'
+  spec.source_files           = 'CBHCollectionKit/**/*.{h,m}'
 
   spec.dependency 'CBHMemoryKit'
 
