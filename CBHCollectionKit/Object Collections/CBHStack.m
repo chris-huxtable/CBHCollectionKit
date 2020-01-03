@@ -54,7 +54,7 @@ NS_ASSUME_NONNULL_END
 
 #define _pushObject(aQueue, anObject)\
 {\
-	CFRetain(anObject);\
+	[anObject retain];\
 	CBHStack_pushValue((aQueue), &(anObject));\
 }
 #define _popObject() [(id)CBHStack_popValue(&_stack) autorelease]

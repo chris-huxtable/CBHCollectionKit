@@ -32,7 +32,7 @@
 
 #define _enqueueObject(aQueue, anObject)\
 {\
-	CFRetain(anObject);\
+	[anObject retain];\
 	CBHQueue_enqueue((aQueue), &(anObject));\
 }
 #define _dequeueObject() [(id)CBHQueue_dequeue(&_queue) autorelease];

@@ -32,7 +32,7 @@
 
 #define _insertObject(aHeap, anObject)\
 {\
-	CFRetain(anObject);\
+	[anObject retain];\
 	CBHHeap_insertValue((aHeap), &(anObject), _comparator);\
 }
 #define _extractObject() [(id)CBHHeap_extractValue(&_queue, _comparator) autorelease]
